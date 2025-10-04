@@ -2,11 +2,15 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchTopRatingTracks } from '../../redux/slices/track'
 import HeroTopRatingItem from './HeroTopRatingItem'
+import HeroTopRatingItemSkeleton from './HeroTopRatingItemSkeleton'
 
 export default function Hero() {
 
     const dispatch = useDispatch()
+    
+    const skeletonArr = [0, 1, 2, 3, 4]
 
+    // const TopRatingTracks = null
     const TopRatingTracks = useSelector(state => state.track.topRatingTracks)
 
     useEffect(() => {
@@ -25,9 +29,12 @@ export default function Hero() {
                         <h2 className="hero__top-title">Популярные треки для оценок</h2>
                         <ul className="hero__top-list">
                             {
-                                TopRatingTracks &&
+                                TopRatingTracks ?
                                 TopRatingTracks.map(e => (
                                     <HeroTopRatingItem key={e._id} name={e.name} avatarUrl={e.avatarUrl} id={e._id} artist={e.artist} />
+                                )) :
+                                skeletonArr.map(e => (
+                                    <HeroTopRatingItemSkeleton key={e} />
                                 ))
                             }
                         </ul>
