@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || "https://cloudrate-backend-production.up.railway.app",
+    baseURL: "https://cloudrate-backend-production.up.railway.app",
 })
 
 instance.interceptors.request.use((config) => {
