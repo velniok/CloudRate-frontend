@@ -21,6 +21,10 @@ export default function App() {
     dispatch(fetchAuthMe())
   }, [])
 
+  console.log('Environment:', import.meta.env.MODE);
+  console.log('API URL:', import.meta.env.VITE_API_URL);
+  console.log('Full env:', import.meta.env);
+
   return (
     <>
       <Header />
