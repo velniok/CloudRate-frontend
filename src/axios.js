@@ -4,7 +4,7 @@ const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_REACT_APP_API_URL,
 })
 
-console.log(process.env.NEXT_PUBLIC_REACT_APP_API_URL)
+console.log(process.env)
 
 instance.interceptors.request.use((config) => {
     config.headers.Authorization = window.localStorage.getItem('token')
