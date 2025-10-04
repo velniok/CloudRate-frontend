@@ -18,7 +18,7 @@ export default function Hero() {
         <div className="hero-wrapper">
             <div className="container">
                 <div className="hero-inner">
-                    <h1 className="hero-title">Оценивай то, о чем не узнаешь из чартов. Докажи свой вкус.</h1>
+                    <h1 className="hero-title">Оценивай то, о чем не узнаешь из чартов. Докажи свой вкус. {process.env.REACT_APP_API_URL} </h1>
                     <p className="hero-desc">Единственная площадка, где рейтинг русской сцены ставят те, кто её понимает.</p>
                     <p className="hero-desc">Открывай новых артистов, делись находками и участвуй в создании главного андерграунд-рейтинга.</p>
                     <div className="hero__top">
