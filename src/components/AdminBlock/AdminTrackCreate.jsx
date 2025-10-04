@@ -110,7 +110,7 @@ export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData 
                             {
                                 trackArtist.map(e => {
                                     return <li className="admin-track__artist-item" onClick={() => onClickArtistIdDel(e)}>
-                                        <img src={`${process.env.REACT_APP_API_URL}${e.avatarUrl}`} alt={e.name} className="admin-track__artist-avatar" />
+                                        <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt={e.name} className="admin-track__artist-avatar" />
                                         <span className="admin-track__artist-name">{e.name}</span>
                                         </li>
                                 })
@@ -140,7 +140,7 @@ export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData 
                                 filterArtist.map(e => {
                                     if (artistId.includes(e._id) === false) {
                                         return <li className="admin-track__filter-item" onClick={() => onClickArtistId(e)} key={e._id}>
-                                            <img src={`${process.env.REACT_APP_API_URL}${e.avatarUrl}`} alt="" className="admin-track__filter-avatar" />
+                                            <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt="" className="admin-track__filter-avatar" />
                                             <span className="admin-track__filter-name">{e.name}</span>
                                         </li>
                                     }
@@ -154,7 +154,7 @@ export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData 
                             <img src={addPhotoIcon} alt="Загрузить аватарку артиста" className="admin-track__create-btn-icon" />
                             {
                                 avatarUrl && (
-                                    <img src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} alt="" className="admin-track__create-avatar" />
+                                    <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="admin-track__create-avatar" />
                                 )
                             }
                         </button>

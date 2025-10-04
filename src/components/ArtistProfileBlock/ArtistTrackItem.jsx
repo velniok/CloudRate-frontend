@@ -6,7 +6,7 @@ export default function ArtistTrackItem({ name, id, avatarUrl, artist, ratingTra
   return (
     <li className="artist__track-item">
         <Link to={`/track/${id}`}>
-            <img src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} alt="" className="artist__track-img" />
+            <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="artist__track-img" />
         </Link>
         <div className="artist__track-info">
             <Link to={`/track/${id}`}>
@@ -17,7 +17,7 @@ export default function ArtistTrackItem({ name, id, avatarUrl, artist, ratingTra
                     artist.map(e => (
                         <Link to={`/artist/${e._id}`} key={e._id}>
                             <div className="artist__track-artist-wrapper">
-                                <img src={`${process.env.REACT_APP_API_URL}${e.avatarUrl}`} alt={e.name} className="artist__track-artist-avatar" />
+                                <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt={e.name} className="artist__track-artist-avatar" />
                                 <span className="artist__track-artist-name" key={e._id}>{e.name}</span>
                             </div>
                         </Link>

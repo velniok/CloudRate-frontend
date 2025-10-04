@@ -17,14 +17,14 @@ export default function AdminTrackList({ name, id, avatarUrl, artist, ArtistsDat
   return (
     <li className="admin-track__list-item">
       <div className="admin-track__list-element--avatar">
-        <img src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} alt="" className="admin-track__list-avatar" />
+        <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="admin-track__list-avatar" />
       </div>
         <span className="admin-track__list-name admin-track__list-element--name"><Link to={`/track/${id}`}>{name}</Link></span>
       <ul className="admin-track__owner-list admin-track__list-element--artist">
         {
           artist.map(e => ArtistsData.filter(obj => obj._id === e.artistId).map(e => (
             <li className="admin-track__owner-item" key={e._id}>
-              <img src={`${process.env.REACT_APP_API_URL}${e.avatarUrl}`} alt={e.name} className="admin-track__owner-avatar" />
+              <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt={e.name} className="admin-track__owner-avatar" />
               <span className="admin-track__owner-name">{e.name}</span>
             </li>
           )))

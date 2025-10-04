@@ -77,7 +77,7 @@ export default function AdminArtistCreate({ modalOpen, setModalOpen }) {
                             <img src={addPhotoIcon} alt="Загрузить аватарку артиста" className="admin-artist__create-btn-icon" />
                             {
                                 avatarUrl && (
-                                    <img src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} alt="" className="admin-artist__create-avatar" />
+                                    <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="admin-artist__create-avatar" />
                                 )
                             }
                         </button>

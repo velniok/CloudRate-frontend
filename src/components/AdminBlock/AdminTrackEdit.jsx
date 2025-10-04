@@ -58,7 +58,7 @@ export default function AdminArtistEdit({ openEdit, setOpenEdit, name, avatarUrl
                             <img src={addPhotoIcon} alt="Загрузить аватарку артиста" className="admin-track__edit-btn-icon" />
                             {
                                 avatarUrl && (
-                                    <img src={`${process.env.REACT_APP_API_URL}${newAvatarUrl}`} alt="" className="admin-track__edit-avatar" />
+                                    <img src={`${import.meta.env.VITE_API_URL}${newAvatarUrl}`} alt="" className="admin-track__edit-avatar" />
                                 )
                             }
                         </button>
