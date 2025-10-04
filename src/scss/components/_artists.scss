@@ -1,0 +1,36 @@
+.artists {
+
+    &-wrapper {
+        margin-top: 112px;
+    }
+
+    &__list {
+        display: flex;
+        column-gap: 30px;
+
+        &-item {
+            padding: 18px 18px;
+            background-color: var(--color-gray);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+
+            transition: background-color 0.3s ease-in;
+
+            &:hover {
+                background-color: var(--color-gray01);
+            }
+        }
+
+        &-img {
+            width: 150px;
+            background-color: var(--color-gray);
+            border-radius: 50%;
+        }
+
+        &-name {
+            display: block;
+            margin-top: 10px;
+        }
+    }
+}

@@ -1,0 +1,101 @@
+.hero {
+
+    &-wrapper {
+        margin-top: 112px;
+    }
+
+    &-inner {
+        text-align: center;
+    }
+
+    &-title {
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: 40px;
+    }
+
+    &-desc {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    &__top {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 20px 40px;
+        border-radius: 18px;
+        background-color: var(--color-gray);
+
+        &-title {
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        &-list {
+            display: flex;
+            justify-content: center;
+            column-gap: 30px;
+        }
+
+        &-item {
+            background-color: var(--color-gray01);
+            border-radius: 12px;
+            width: 200px;
+            overflow: hidden;
+
+            transition: opacity 0.3s ease-in;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        &-avatar {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 7px;
+        }
+
+        &-name {
+            margin-bottom: 7px;
+            display: block;
+        }
+
+        &-artist {
+
+            &-list {
+                margin-bottom: 7px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 5px;
+            }
+
+            &-item {
+                display: flex;
+                align-items: center;
+                column-gap: 8px;
+                background-color: var(--color-gray01);
+                opacity: 0.7;
+                border-radius: 8px;
+
+                transition: opacity 0.3s ease-in;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+
+            &-avatar {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+            }
+            
+            &-name {
+                font-size: 14px;
+            }
+        }
+    }
+}
