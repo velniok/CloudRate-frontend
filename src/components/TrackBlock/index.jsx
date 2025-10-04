@@ -13,7 +13,7 @@ export default function TrackBlock({ name, avatarUrl, id, artist, ratingTrackOve
             <div className="container">
                 <div className="track-inner">
                     <div className="track-left">
-                        <img src={`http://localhost:5000${avatarUrl}`} alt={name} className="track-img" />
+                        <img src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} alt={name} className="track-img" />
                         <div className="track__info">
                             <span className="track__info-type">Сингл</span>
                             <span className="track__info-name">{name}</span>
@@ -22,7 +22,7 @@ export default function TrackBlock({ name, avatarUrl, id, artist, ratingTrackOve
                                     artist.map(e => (
                                         <Link to={`/artist/${e._id}`} key={e._id}>
                                             <div className="track__artist-list-wrapper">
-                                                <img src={`http://localhost:5000${e.avatarUrl}`} alt={e.name} className="track__artist-list-avatar" />
+                                                <img src={`${process.env.REACT_APP_API_URL}${e.avatarUrl}`} alt={e.name} className="track__artist-list-avatar" />
                                                 <span className="track__artist-list-name" key={e._id}>{e.name}</span>
                                             </div>
                                         </Link>

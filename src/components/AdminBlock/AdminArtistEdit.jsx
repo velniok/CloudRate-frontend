@@ -64,7 +64,7 @@ export default function AdminArtistEdit({ openEdit, setOpenEdit, name, avatarUrl
                             <img src={addPhotoIcon} alt="Загрузить аватарку артиста" className="admin-artist__edit-btn-icon" />
                             {
                                 avatarUrl && (
-                                    <img src={`http://localhost:5000${newAvatarUrl}`} alt="" className="admin-artist__edit-avatar" />
+                                    <img src={`${process.env.REACT_APP_API_URL}${newAvatarUrl}`} alt="" className="admin-artist__edit-avatar" />
                                 )
                             }
                         </button>

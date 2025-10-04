@@ -17,7 +17,7 @@ export default function AdminArtistList({ name, avatarUrl, id, TracksData, track
   return (
     <li className="admin-artist__list-item">
         <div className="admin-artist__list-element--avatar">
-            <img src={`http://localhost:5000${avatarUrl}`} alt="" className="admin-artist__list-avatar" />
+            <img src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} alt="" className="admin-artist__list-avatar" />
         </div>
         <span className="admin-artist__list-name admin-artist__list-element--name"><Link to={`/artist/${id}`}>{name}</Link></span>
         <ul className="admin-artist__track-list admin-artist__track-element--track">
@@ -28,7 +28,7 @@ export default function AdminArtistList({ name, avatarUrl, id, TracksData, track
                     }
                 }).map(e => (
                     <li className="admin-artist__track-item" key={e._id}>
-                        <img src={`http://localhost:5000${e.avatarUrl}`} alt={e.name} className="admin-artist__track-avatar" />
+                        <img src={`${process.env.REACT_APP_API_URL}${e.avatarUrl}`} alt={e.name} className="admin-artist__track-avatar" />
                         <span className="admin-artist__track-name">{e.name}</span>
                     </li>
                 ))

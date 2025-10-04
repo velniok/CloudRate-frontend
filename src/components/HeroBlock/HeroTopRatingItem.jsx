@@ -5,7 +5,7 @@ export default function HeroTopRatingItem({ name, avatarUrl, id, artist }) {
   return (
     <li className="hero__top-item">
         <Link to={`/track/${id}`}>
-        <img src={`http://localhost:5000${avatarUrl}`} alt={name} className="hero__top-avatar" />
+        <img src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} alt={name} className="hero__top-avatar" />
         <span className="hero__top-name">{name}</span>
         </Link>
         <ul className="hero__top-artist-list">
@@ -13,7 +13,7 @@ export default function HeroTopRatingItem({ name, avatarUrl, id, artist }) {
                 artist.map(e => (
                     <Link to={`/artist/${e._id}`} key={e._id}>
                         <li className="hero__top-artist-item">
-                            <img src={`http://localhost:5000${e.avatarUrl}`} alt="" className="hero__top-artist-avatar" />
+                            <img src={`${process.env.REACT_APP_API_URL}${e.avatarUrl}`} alt="" className="hero__top-artist-avatar" />
                             <span className="hero__top-artist-name">{e.name}</span>
                         </li>
                      </Link>

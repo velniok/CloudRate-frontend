@@ -9,7 +9,7 @@ export default function ArtistProfileBlock({ avatarUrl, name, soundCloudUrl, tra
                 <div className="container">
                     <div className="artist-inner">
                         <div className="artist-left">
-                            <img src={`http://localhost:5000${avatarUrl}`} alt={name} className="artist-img" />
+                            <img src={`${process.env.REACT_APP_API_URL}${avatarUrl}`} alt={name} className="artist-img" />
                             <div className="artist__info">
                                 <h1 className="artist__info-name">{name}</h1>
                                 <a href={soundCloudUrl} className="artist__info-soundcloud">SoundCloud артиста</a>
