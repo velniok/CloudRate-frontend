@@ -1,0 +1,196 @@
+.user {
+
+    &-wrapper {
+        margin-top: 64px;
+        display: flex;
+        column-gap: 30px;
+    }
+
+    &__profile {
+        padding: 20px 30px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        column-gap: 18px;
+        background-color: var(--color-gray);
+        border-radius: 12px;
+
+        &-avatar {
+            width: 200px;
+            height: 200px;
+            background-color: var(--color-gray01);
+            border-radius: 12px;
+        }
+
+        &-info {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+
+        &-nickname {
+            margin-bottom: 6px;
+            font-size: 35px;
+        }
+
+        &-role {
+            display: block;
+            background-color: var(--color-blue);
+            padding: 6px 8px;
+            border-radius: 8px;
+
+            &--admin {
+                background-color: var(--color-red);
+            }
+        }
+    }
+
+    &__rating {
+        height: 100%;
+        background-color: var(--color-gray);
+        border-radius: 12px;
+        padding: 20px 0;
+
+        &-title {
+            font-size: 35px;
+            border-bottom: 1px solid var(--color-gray01);
+            padding-bottom: 20px;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        &-list {
+            display: grid;
+            width: 733px;
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 12px;
+            column-gap: 12px;
+            padding: 0 30px;
+        }
+
+        &-item {
+            position: relative;
+            padding: 6px 12px;
+            background-color: var(--color-gray01);
+            border-radius: 12px;
+            width: 330px;
+
+            transition: border-radius 0.3s ease-in;
+
+            &:hover {
+                border-radius: 12px 12px 0 0;
+            }
+        }
+
+        &-wrapper {
+            display: flex;
+            align-items: center;
+            column-gap: 12px;
+
+            transition: opacity 0.3s ease-in;
+
+            &:hover {
+                opacity: 0.7;
+            }
+
+            &.opacity {
+                opacity: 0.7;
+            }
+        }
+
+        &-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        &-desc {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-name {
+            font-size: 18px;
+        }
+
+        &-artist {
+            display: flex;
+            width: 170px;
+            column-gap: 5px;
+            overflow: hidden;
+
+            &-name {
+                opacity: 0.7;
+                font-size: 12px;
+                white-space: nowrap;
+
+                transition: opacity 0.3s ease-in;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        &-grade {
+            position: absolute;
+            right: 12px;
+        }
+        
+        &-info {
+            opacity: 0;
+            visibility: hidden;
+            width: 330px;
+            height: 84px;
+            position: absolute;
+            z-index: 999;
+            left: 0;
+            bottom: 0;
+            transform: translateY(100%);
+            background-color: var(--color-gray);
+            border: 3px solid var(--color-gray01);
+            border-radius: 0 0 12px 12px;
+            padding: 6px 12px;
+            display: flex;
+            flex-direction: column;
+
+            transition: opacity 0.3s, visibility 0.3s ease-in;
+
+            &.show {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        &-link {
+            margin-bottom: 7px;
+            font-size: 14px;
+
+            transition: opacity 0.3s ease-in;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        &-criteria {
+
+            &-list {
+                display: flex;
+                column-gap: 12px;
+            }
+
+            &-item {
+                width: 30px;
+                height: 30px;
+                border: 2px solid var(--color-blue);
+                border-radius: 50%;
+                display: flex;
+                font-size: 16px;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}

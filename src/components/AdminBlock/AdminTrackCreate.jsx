@@ -76,14 +76,14 @@ export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData 
                 avatarUrl: artist.avatarUrl,
             }
             setTrackArtist(prev => [...prev, artistObj])
-            setArtistId(prev => [...prev, artist._id])
+            setArtistId(prev => [...prev, artistObj._id])
             setArtistName(prev => prev = '')
         }
     }
 
     const onClickArtistIdDel = (e) => {
         setArtistId(prev => prev = artistId.filter(obj => obj !== e._id))
-        setTrackArtist(prev => prev = trackArtist.filter(obj => obj.id !== e._id))
+        setTrackArtist(prev => prev = trackArtist.filter(obj => obj._id !== e._id))
     }
  
   return (

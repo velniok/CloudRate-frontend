@@ -15,15 +15,10 @@ import UserPage from './pages/UserPage'
 
 export default function App() {
   const dispatch = useDispatch()
-  const isAuth = useSelector(selectIsAuth)
 
   useEffect(() => {
     dispatch(fetchAuthMe())
   }, [])
-
-  console.log('Environment:', import.meta.env.MODE);
-  console.log('API URL:', import.meta.env.VITE_API_URL);
-  console.log('Full env:', import.meta.env);
 
   return (
     <>

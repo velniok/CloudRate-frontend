@@ -80,7 +80,7 @@ export default function AuthReg() {
                         </ul>
                         
                     </form>
-                    <button type="submit" className="reg-submit btn--green" onClick={reg}>Войти</button>
+                    <button type="submit" className="reg-submit btn--green" onClick={reg}>Зарегистрироваться</button>
                 </div>
             </div>
         </div>

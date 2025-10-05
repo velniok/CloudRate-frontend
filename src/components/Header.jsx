@@ -8,7 +8,7 @@ export default function Header() {
     const location = useLocation().pathname;
     
     const isAuth = useSelector(selectIsAuth)
-    const userData = useSelector((state) => state.auth.data)
+    const UserData = useSelector((state) => state.auth.data)
     const dispatch = useDispatch()
 
     const onClickLogout = () => {
@@ -39,11 +39,11 @@ export default function Header() {
                         {
                             isAuth ?
                             <>
-                                <Link to="/user">
+                                <Link to={`/user/${UserData.user._id}`}>
                                     <button className="header__btns-auth btn--blue">Профиль</button>
                                 </Link>
                                 {
-                                    userData?.user.role === 'admin' &&
+                                    UserData?.user.role === 'admin' &&
                                     <Link to="/admin">
                                         <button className="header__btns-admin btn--red">Админ</button>
                                     </Link>

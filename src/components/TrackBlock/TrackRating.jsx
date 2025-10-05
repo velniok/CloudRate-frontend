@@ -36,9 +36,7 @@ export default function TrackRating({ id }) {
         await axios.patch(`/track/${id}`, {
             ratingOverall: ratingOverall,
             ratingCriteria: rating,
-        })
-        await axios.patch(`/auth/${UserData.user._id}`, {
-            trackId: id,
+            userId: UserData.user._id
         })
         window.location.reload();
     }

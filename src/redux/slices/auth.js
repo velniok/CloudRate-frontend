@@ -10,11 +10,6 @@ export const fetchAuth = createAsyncThunk('auth/fetchAuth', async (params, { rej
     }
 })
 
-export const fetchGetUser = createAsyncThunk('auth/fetchGetUser', async (id) => {
-    const { data } = await axios.get(`/auth/${id}`)
-    return data
-})
-
 export const fetchRegister = createAsyncThunk('auth/fetchRegister', async (params, { rejectWithValue }) => {
     try {
         const { data } = await axios.post('/auth/register', params)
@@ -69,19 +64,6 @@ const authSlice = createSlice({
         .addCase(fetchRegister.rejected, (state, action) => {
             state.status = 'error',
             state.data = action.payload
-        })
-
-        .addCase(fetchGetUser.pending, (state) => {
-            state.status = 'loading',
-            state.data = null
-        })
-        .addCase(fetchGetUser.fulfilled, (state, action) => {
-            state.status = 'loaded',
-            state.data = action.payload
-        })
-        .addCase(fetchGetUser.rejected, (state) => {
-            state.status = 'error',
-            state.data = null
         })
         
         .addCase(fetchAuthMe.pending, (state) => {

@@ -9,6 +9,7 @@ export default function AdminArtistList({ name, avatarUrl, id, TracksData, track
     const dispatch = useDispatch()
 
     const [openEdit, setOpenEdit] = useState(false)
+    const [openMore, setOpenMore] = useState(false)
 
     const onClickArtistRemove = (id) => {
         dispatch(fetchArtistRemove(id))
@@ -26,12 +27,45 @@ export default function AdminArtistList({ name, avatarUrl, id, TracksData, track
                     if (tracks.includes(obj._id)) {
                         return true
                     }
-                }).map(e => (
-                    <li className="admin-artist__track-item" key={e._id}>
-                        <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt={e.name} className="admin-artist__track-avatar" />
-                        <span className="admin-artist__track-name">{e.name}</span>
-                    </li>
-                ))
+                }).map((e, index) => {
+                    if (index < 3) {
+                        return (
+                            <li className="admin-artist__track-item" key={e._id}>
+                                <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt={e.name} className="admin-artist__track-avatar" />
+                                <span className="admin-artist__track-name">{e.name}</span>
+                            </li>
+                        )
+                    }
+                })
+            }
+            {
+                TracksData.filter(obj => {
+                    if (tracks.includes(obj._id)) {
+                        return true
+                    }
+                }).length > 3 && (<>
+                <li className="admin-artist__track-item admin-artist__track-item--more" onClick={() => setOpenMore(!openMore)}>
+                    <span className={`admin-artist__track-more-btn ${openMore ? "show" : ""}`}>+</span>
+                </li>
+                    <div className={`admin-artist__track-more-wrapper ${openMore ? "show" : ""}`}>
+                    {
+                        TracksData.filter(obj => {
+                            if (tracks.includes(obj._id)) {
+                                return true
+                            }
+                        }).map((e, index) => {
+                            if (index > 2) {
+                                return (
+                                    <div className="admin-artist__track-item">
+                                        <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt={e.name} className="admin-artist__track-avatar" />
+                                        <span className="admin-artist__track-name">{e.name}</span>
+                                    </div>
+                                )
+                            }
+                        })
+                    }
+                    </div>
+                </>)
             }
         </ul>
         <div className="admin-artist__list-element--options">

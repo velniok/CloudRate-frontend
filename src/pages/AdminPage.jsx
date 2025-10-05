@@ -7,11 +7,8 @@ export default function AdminPage() {
 
     const userData = useSelector((state) => state.auth.data)
 
-    if (userData?.user.role !== 'admin') {
-        return <Navigate to='/' />
-    }
-
   return (
+    userData?.user.role === 'admin' &&
     <AdminBlock />
   )
 }

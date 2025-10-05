@@ -2,24 +2,24 @@ import React, { useEffect } from 'react'
 import UserBlock from '../components/UserBlock'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
-import { fetchGetUser } from '../redux/slices/auth'
+import { fetchGetUser } from '../redux/slices/user'
 
 export default function UserPage() {
 
-  const params = Number(useParams().id)
+  const params = useParams().id
   const dispatch = useDispatch()
 
-  const UserData = useSelector(state => state.auth.data)
-  const UserStatus = useSelector(state => state.auth.status === 'loaded')
+  const UserData = useSelector(state => state.user.data)
+  const UserStatus = useSelector(state => state.user.status === 'loaded')
 
   useEffect(() => {
     dispatch(fetchGetUser(params))
-  }, [])
+  }, [params])
 
   return (
     <>
       {
-        UserStatus && <UserBlock key={UserData.user.id} nickname={UserData.user.nickname} />
+        UserStatus && <UserBlock key={UserData._id} nickname={UserData.nickname} avatarUrl={UserData.avatarUrl} role={UserData.role} rating={UserData.ratingTracks} />
       }
     </>
   )
