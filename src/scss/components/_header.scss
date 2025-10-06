@@ -2,7 +2,7 @@
 
     &-wrapper {
         padding: 10px 0;
-        border-bottom: solid 1px var(--color-gray);
+        border-bottom: solid 2px var(--color-gray);
     }
 
     &__top {
@@ -34,17 +34,32 @@
         &-list {
             display: flex;
             align-items: center;
-            column-gap: 15px;
+            column-gap: 20px;
         }
 
         &-item {
+            position: relative;
+            font-size: 17px;
 
-            transition: padding 0.3s ease-in;
+            &::before {
+                position: absolute;
+                content: '';
+                opacity: 0;
+                bottom: -5px;
+                left: -5%;
+                width: 110%;
+                height: 3px;
+                background-color: var(--color-blue);
+                border-radius: 3px;
+
+                transition: opacity 0.3s ease-in;
+            }
 
             &--active {
-                background-color: var(--color-gray);
-                padding: 14px 28px;
-                border-radius: 8px;
+
+                &::before {
+                    opacity: 1;
+                }
 
                 & a {
                     cursor: default;
@@ -52,9 +67,10 @@
             }
 
             &:hover {
-                background-color: var(--color-gray);
-                padding: 14px 28px;
-                border-radius: 8px;
+
+                &::before {
+                    opacity: 0.7;
+                }
             }
         }
     }
