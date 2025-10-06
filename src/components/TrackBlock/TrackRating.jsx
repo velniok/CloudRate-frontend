@@ -76,20 +76,20 @@ export default function TrackRating({ id }) {
                 }
         </ul>
         <div className="track__general">
-            <h3 className="track__general-title">Общая оценка</h3>
-            <span className="track__general-num">{ratingOverall}</span>
-            <form action="">
+            <div className="track__general-wrapper">
+                <h3 className="track__general-title">Общая оценка</h3>
+                <span className="track__general-num rating-overall">{ratingOverall}</span>
+            </div>
                 {
                     isAuth ?
                      <>
                         {
-                            UserData.user.ratingTracks.includes(id) ? <span className="">Вы уже оценили этот трек</span>
+                            UserData.user.ratingTracks.some(e => e.trackId === id) ? <span className="">Вы уже оценили этот трек</span>
                             : <button className="btn--green" type="button" onClick={onClickSubmitRating}>Отправить</button>
                         }
                      </>
                      : <span className="">Авторизуйтесь для оценки треков</span>
                 }
-            </form>
         </div>
     </div>
   )

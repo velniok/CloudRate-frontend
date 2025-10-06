@@ -63,4 +63,115 @@
         display: flex;
         column-gap: 15px;
     }
+
+    &__profile {
+        position: relative;
+        z-index: 9999;
+
+        &-avatar {
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            background-color: var(--color-gray01);
+            border-radius: 50%;
+            transition: opacity 0.3s ease-in;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        &-info {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            right: 0;
+            bottom: -5px;
+            transform: translateY(100%);
+            width: 300px;
+            height: auto;
+            padding: 10px 0;
+            background-color: var(--color-gray);
+            border-radius: 12px;
+            border: 2px solid var(--color-gray01);
+
+            transition: opacity 0.3s, visibility 0.3s ease-in;
+
+            &.show {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        
+        &-close {
+            position: absolute;
+            cursor: pointer;
+            top: 5px;
+            right: 10px;
+            font-size: 22px;
+            transform: rotate(45deg);
+
+            transition: opacity 0.3s ease-in;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        &-nickname {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            column-gap: 7px;
+            height: 38px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            border-bottom: 2px solid var(--color-gray01);
+        }
+
+        &-role {
+            display: block;
+            background-color: var(--color-blue);
+            padding: 3px 6px;
+            border-radius: 8px;
+
+            &--admin {
+                background-color: var(--color-red);
+            }
+        }
+
+        &-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            row-gap: 7px;
+        }
+
+        &--action {
+            display: block;
+            cursor: pointer;
+            padding-left: 15px;
+
+            transition: color 0.3s ease-in;
+        }
+
+        &-page {
+
+            &:hover {
+                color: var(--color-blue);
+            }
+        }
+
+        &-admin {
+            &:hover {
+                color: var(--color-red);
+            }
+        }
+
+        &-logout {
+            &:hover {
+                color: var(--color-red);
+            }
+        }
+    }
 }

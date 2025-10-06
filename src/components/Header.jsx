@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router'
 import { selectIsAuth, logout } from '../redux/slices/auth'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,8 +8,11 @@ export default function Header() {
     const location = useLocation().pathname;
     
     const isAuth = useSelector(selectIsAuth)
+    const UserStatus = useSelector((state) => state.auth.status)
     const UserData = useSelector((state) => state.auth.data)
     const dispatch = useDispatch()
+
+    const [openProfile, setOpenProfile] = useState(false)
 
     const onClickLogout = () => {
         dispatch(logout())
@@ -38,19 +41,34 @@ export default function Header() {
                     <div className="header__btns">
                         {
                             isAuth ?
-                            <>
-                                <Link to={`/user/${UserData.user._id}`}>
-                                    <button className="header__btns-auth btn--blue">Профиль</button>
-                                </Link>
+                            UserStatus === 'loaded' &&
+                            <div className="header__profile">
                                 {
-                                    UserData?.user.role === 'admin' &&
-                                    <Link to="/admin">
-                                        <button className="header__btns-admin btn--red">Админ</button>
-                                    </Link>
+                                    UserData.avatarUrl ? <img src={UserData.user.avatarUrl} alt="" className="header__profile-avatar" onClick={() => setOpenProfile(!openProfile)} /> : <div className="header__profile-avatar" onClick={() => setOpenProfile(!openProfile)} ></div>
                                 }
-                                <button className="header__btns-auth btn--red" onClick={onClickLogout}>Выйти</button>
-                                
-                            </>
+                                <div className={`header__profile-info ${openProfile ? 'show' : ''}`}>
+                                    <span className="header__profile-close" onClick={() => setOpenProfile(false)} >+</span>
+                                    <span className="header__profile-nickname">
+                                        {UserData.user.nickname}
+                                        {
+                                            UserData.user.role === 'admin' &&
+                                            <span className="header__profile-role header__profile-role--admin">{UserData.user.role}</span>
+                                        }
+                                    </span>
+                                        <div className="header__profile-inner">
+                                        <Link to={`/user/${UserData.user._id}`}>
+                                            <span className="header__profile-page header__profile--action" onClick={() => setOpenProfile(false)} >Моя страница</span>
+                                        </Link>
+                                        {
+                                            UserData.user.role === 'admin' &&
+                                            <Link to={"/admin"}>
+                                                <span className="header__profile-admin header__profile--action" onClick={() => setOpenProfile(false)}>Админ-панель</span>
+                                            </Link>
+                                        }
+                                        <span className="header__profile-logout header__profile--action" onClick={() => {onClickLogout; setOpenProfile(false)}}>Выйти из аккаунта</span>
+                                    </div>
+                                </div>
+                            </div>
                             :
                             <Link to="/login">
                                 <button className="header__btns-auth btn--blue">Войти</button>

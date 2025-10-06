@@ -111,16 +111,19 @@
         }
 
         &-name {
+            margin-bottom: 1px;
             font-size: 18px;
         }
 
         &-artist {
             display: flex;
-            width: 170px;
+            flex-wrap: wrap;
+            width: 180px;
             column-gap: 5px;
             overflow: hidden;
 
             &-name {
+                display: block;
                 opacity: 0.7;
                 font-size: 12px;
                 white-space: nowrap;
@@ -136,6 +139,8 @@
         &-grade {
             position: absolute;
             right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
         }
         
         &-info {

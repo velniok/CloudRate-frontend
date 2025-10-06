@@ -28,6 +28,10 @@ export default function UserBlock({ nickname, avatarUrl, role, rating }) {
                         <h2 className="user__rating-title">Оценки пользователя</h2>
                         <ul className="user__rating-list">
                             {
+                                rating.length === 0 &&
+                                <span className="user__rating-none">У пользователя еще нет оценок</span>
+                            }
+                            {
                                 rating.map((e, index) => (
                                     <li className="user__rating-item" key={e.track._id} onMouseLeave={() => setRatingInfoShow(null)}>
                                         <div className={`user__rating-wrapper ${ratingInfoShow === index ? 'opacity' : ''}`} onMouseEnter={() => setRatingInfoShow(index)}>

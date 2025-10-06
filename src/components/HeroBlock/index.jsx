@@ -26,12 +26,12 @@ export default function Hero() {
                     <p className="hero-desc">Единственная площадка, где рейтинг русской сцены ставят те, кто её понимает.</p>
                     <p className="hero-desc">Открывай новых артистов, делись находками и участвуй в создании главного андерграунд-рейтинга.</p>
                     <div className="hero__top">
-                        <h2 className="hero__top-title">Популярные треки для оценок</h2>
+                        <h2 className="hero__top-title">Топ треков по количеству оценок</h2>
                         <ul className="hero__top-list">
                             {
                                 TopRatingTracks ?
                                 TopRatingTracks.map(e => (
-                                    <HeroTopRatingItem key={e._id} name={e.name} avatarUrl={e.avatarUrl} id={e._id} artist={e.artist} />
+                                    <HeroTopRatingItem key={e._id} name={e.name} avatarUrl={e.avatarUrl} id={e._id} artist={e.artist} ratingTrack={e.ratingTrack} />
                                 )) :
                                 skeletonArr.map(e => (
                                     <HeroTopRatingItemSkeleton key={e} />

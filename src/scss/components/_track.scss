@@ -104,10 +104,10 @@
             }
 
             &-avg {
-                font-size: 14px;
+                font-size: 16px;
                 width: 35px;
                 height: 35px;
-                border: 3px solid var(--color-blue);
+                border: 2px solid var(--color-blue);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -224,19 +224,17 @@
         
         &-title {
             font-size: 40px;
+        }
+
+        &-wrapper {
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            column-gap: 15px;
         }
 
         &-num {
-            display: block;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--color-blue);
-            border-radius: 50%;
+
         }
     }
 }
