@@ -9,13 +9,15 @@ export default function TrackSkeleton() {
             <div className="container">
                 <div className="track-inner">
                     <div className="track-left">
-                        <Skeleton className="track-img" />
-                        <div className="track__info">
-                            <Skeleton className="track__info-name" width="300px" height="44px" radius="12px" />
-                            <ul className="track__artist-list">
-                                <Skeleton className="track__artist-list-wrapper" width="150px" height="31px" />
-                            </ul>
-                            <Skeleton className="track__info-rating" width="60px" height="40px" radius="8px" />
+                        <div className="track__profile">
+                            <Skeleton className="track__profile-avatar" />
+                            <div className="track__profile-info">
+                                <Skeleton className="track__profile-name" width="300px" height="44px" radius="12px" />
+                                <ul className="track__profile-artist-list">
+                                    <Skeleton className="track__profile-artist-wrapper" width="150px" height="31px" />
+                                </ul>
+                                <Skeleton className="track__profile-rating" width="60px" height="40px" radius="8px" />
+                            </div>
                         </div>
                     </div>
                 </div>

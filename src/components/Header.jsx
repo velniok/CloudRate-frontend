@@ -65,7 +65,7 @@ export default function Header() {
                                                 <span className="header__profile-admin header__profile--action" onClick={() => setOpenProfile(false)}>Админ-панель</span>
                                             </Link>
                                         }
-                                        <span className="header__profile-logout header__profile--action" onClick={() => {onClickLogout; setOpenProfile(false)}}>Выйти из аккаунта</span>
+                                        <span className="header__profile-logout header__profile--action" onClick={() => {onClickLogout(); setOpenProfile(false)}}>Выйти из аккаунта</span>
                                     </div>
                                 </div>
                             </div>

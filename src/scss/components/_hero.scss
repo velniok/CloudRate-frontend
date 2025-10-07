@@ -62,7 +62,7 @@
         }
 
         &-name {
-            margin-bottom: 7px;
+            margin-bottom: 5px;
             display: block;
         }
 
@@ -71,9 +71,11 @@
             &-list {
                 margin-bottom: 7px;
                 display: flex;
-                flex-direction: column;
-                align-items: center;
+                flex-wrap: wrap;
+                justify-content: center;
+                column-gap: 7px;
                 row-gap: 5px;
+                padding: 0 10px;
             }
 
             &-item {
