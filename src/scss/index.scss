@@ -1,7 +1,7 @@
 @use './base';
 
 @use './components/header';
-@use './components/hero';
+@use './components/top-tracks';
 @use './components/artists';
 @use './components/artist';
 @use './components/track';
@@ -10,3 +10,4 @@
 @use './components/admin';
 @use './components/skeleton';
 @use './components/user';
+@use './components/footer';

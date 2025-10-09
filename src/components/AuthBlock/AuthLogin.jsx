@@ -19,6 +19,8 @@ export default function AuthLogin() {
         if (data.error?.message) {
             console.log(data)
             setLoginError(`${data.payload.message}`)
+            setPassword('')
+            setEmail('')
             return false
         }
 
@@ -36,24 +38,24 @@ export default function AuthLogin() {
         <div className="login-wrapper">
             <div className="container">
                 <div className="login-inner">
-                    <h1 className="login-title">Вход</h1>
+                    <h2 className="login-title title">Вход</h2>
                     <p className="login-desc">Введите данные для входа в свой аккаунт</p>
-                    <p className="login-desc">Нет аккаунта? <Link to="/registration" className="login-link">Зарегистрироваться</Link></p>
-                    {
-                        loginError && <p className="login-error">{loginError}</p>
-                    }
-                    <ul className="login__auth-list">
-                        <li className="login__auth-item">
-                            <label htmlFor="email" className="login__auth-label">Email</label>
-                            <input type="email" className="login__auth-input" required value={email} onChange={e => setEmail(e.target.value)} />
-                        </li>
-                        <li className="login__auth-item">
-                            <label htmlFor="password" className="login__auth-label">Пароль</label>
-                            <input type="password" className="login__auth-input" required value={password} onChange={e => setPassword(e.target.value)} />
-                        </li>
-                    </ul>
-                    <button type="submit" className="login-submit btn--green" onClick={login}>Войти</button>
-                </div>
+                    <p className="login__noreg">Нет аккаунта? <Link to="/registration" className="login__noreg-link">Зарегистрироваться</Link></p>
+                    <form action="" className="login__form">
+                        {
+                            loginError && <span className="login__form-error">{loginError}</span>
+                        }
+                        <ul className="login__form-list">
+                            <li className="login__form-item">
+                                <input type="email" className={`login__form-input ${loginError ? 'error' : ''}`} placeholder='Email' autoComplete='on' required value={email} onChange={e => setEmail(e.target.value)} onClick={() => setLoginError(null)} />
+                            </li>
+                            <li className="login__form-item">
+                                <input type="password" className={`login__form-input ${loginError ? 'error' : ''}`} placeholder='Введите пароль' autoComplete='on' required value={password} onChange={e => setPassword(e.target.value)} onClick={() => setLoginError(null)} />
+                            </li>
+                        </ul>
+                        <button type="button" className="login__form-submit" onClick={login} >Войти</button>
+                    </form>
+                </div>                
             </div>
         </div>
     </section>

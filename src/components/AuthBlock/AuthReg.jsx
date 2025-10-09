@@ -44,44 +44,39 @@ export default function AuthReg() {
         <div className="reg-wrapper">
             <div className="container">
                 <div className="reg-inner">
-                    <h1 className="reg-title">Создать аккаунт</h1>
+                    <h2 className="reg-title title">Создать аккаунт</h2>
                     <p className="reg-desc">Введите данные для регистрации аккаунта</p>
-                    <p className="reg-desc">Уже есть аккаунт? <Link to="/login" className="login-link">Войти</Link></p>
-                    <form action="" className="reg__auth">
-                        <ul className="reg__auth-list">
-                            <li className="reg__auth-item">
-                                <label className="reg__auth-label">Email</label>
-                                <input type="email" className="reg__auth-input" value={email} onChange={e => setEmail(e.target.value)} required />
+                    <p className="reg__noreg">Уже есть аккаунт? <Link to="/login" className="reg__noreg-link">Войти</Link></p>
+                    <form action="" className="reg__form">
+                        <ul className="reg__form-list">
+                            <li className="reg__form-item">
                                 {
-                                    emailError && <p className="reg__auth-error">{emailError}</p>
+                                    emailError && <span className="reg__form-error">{emailError}</span>
                                 }
+                                <input type="email" className={`reg__form-input ${emailError ? 'error' : ''}`} placeholder='Email' autoComplete='on' required value={email} onChange={e => setEmail(e.target.value)} />
                             </li>
-                            <li className="reg__auth-item">
-                                <label className="reg__auth-label">Никнейм</label>
-                                <input type="text" className="reg__auth-input" value={nickname} onChange={e => setNickname(e.target.value)} required />
+                            <li className="reg__form-item">
                                 {
-                                    nicknameError && <p className="reg__auth-error">{nicknameError}</p>
+                                    nicknameError && <span className="reg__form-error">{nicknameError}</span>
                                 }
+                                <input type="text" className={`reg__form-input ${nicknameError ? 'error' : ''}`} placeholder='Никнейм' required value={nickname} onChange={e => setNickname(e.target.value)} />
                             </li>
-                            <li className="reg__auth-item">
-                                <label className="reg__auth-label">Пароль</label>
-                                <input type="password" className="reg__auth-input" value={password} onChange={e => setPassword(e.target.value)} required />
+                            <li className="reg__form-item">
                                 {
-                                    passwordError && <p className="reg__auth-error">{passwordError}</p>
+                                    passwordError && <span className="reg__form-error">{passwordError}</span>
                                 }
+                                <input type="password" className={`reg__form-input ${passwordError ? 'error' : ''}`} placeholder='Пароль' autoComplete='on' required value={password} onChange={e => setPassword(e.target.value)} />
                             </li>
-                            <li className="reg__auth-item">
-                                <label className="reg__auth-label">Подтвердите пароль</label>
-                                <input type="password" className="reg__auth-input" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required />
+                            <li className="reg__form-item">
                                 {
-                                    password !== confirmPassword && <p className="reg__auth-error">Пароли не совпадают</p>
+                                    password !== confirmPassword && <span className="reg__form-error">Пароли не совпадают</span>
                                 }
+                                <input type="password" className={`reg__form-input ${password !== confirmPassword ? 'error' : ''}`} placeholder='Повторите пароль' autoComplete='on' value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
                             </li>
                         </ul>
-                        
+                        <button type="button" className="reg__form-submit" onClick={reg}>Создать аккаунт</button>
                     </form>
-                    <button type="submit" className="reg-submit btn--green" onClick={reg}>Зарегистрироваться</button>
-                </div>
+                </div>                
             </div>
         </div>
     </section>

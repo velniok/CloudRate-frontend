@@ -8,9 +8,9 @@
     // --color-white: #ffffff;
     // --color-blue: #60aef0;
 
-    --color-black: #161b21;
-    --color-gray: #1d232c;
-    --color-gray01: #3b4758;
+    --color-black: #121212;
+    --color-black01: #222326;
+    --color-black02: #303136;
     --color-white: #ffffff;
     --color-blue: #0077e4;
     --color-red: #ff316a;
@@ -24,9 +24,10 @@
 }
 
 body {
+    margin: 0;
     background-color: var(--color-black);
     font-family: var(--font-family);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--color-white);
 }
@@ -60,73 +61,43 @@ li {
 }
 
 button {
-    padding: 12px 32px;
-    border-radius: 8px;
-    background-color: inherit;
-    border: unset;
-    color: inherit;
-    font-size: 16px;
-    font-weight: 600;
     cursor: pointer;
+    background-color: transparent;
+    border: 2px solid var(--color-white);
+    border-radius: 12px;
+    color: var(--color-white);
+    font-weight: 400;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 24px;
 
-    transition: background-color 0.3s ease-in;
-}
-
-.btn--green {
-    background-color: var(--color-green);
-    border: unset;
-
-    transition: opacity 0.3s ease-in;
-
-    &:hover {
-        opacity: 0.8;
-    }
-}
-
-.btn--red {
-    background-color: var(--color-red);
-    border: unset;
-
-    transition: opacity 0.3s ease-in;
+    transition: background-color 0.3s, color 0.3s ease-in;
 
     &:hover {
-        opacity: 0.8;
-    }
-}
-
-.btn--yellow {
-    background-color: var(--color-yellow);
-
-    transition: opacity 0.3s ease-in;
-
-    &:hover {
-        opacity: 0.8;
-    }
-}
-
-.btn--blue {
-    background-color: var(--color-blue);
-
-    transition: opacity 0.3s ease-in;
-
-    &:hover {
-        opacity: 0.8;
+        background-color: var(--color-white);
+        color: var(--color-black)
     }
 }
 
 .rating-overall {
-    font-size: 18px;
-    width: 40px;
-    height: 40px;
-    border: 3px solid var(--color-blue);
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--color-black);
+    border: 2px solid var(--color-white);
     border-radius: 50%;
 }
 
+.title {
+    font-size: 22px;
+}
+
 .container {
-    max-width: 1626px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 15px;
 }

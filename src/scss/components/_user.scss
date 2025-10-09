@@ -1,37 +1,33 @@
 .user {
 
-    &-wrapper {
-        margin-top: 64px;
-        display: flex;
-        column-gap: 30px;
-    }
-
     &__profile {
-        padding: 20px 30px;
-        width: 100%;
-        height: 100%;
+        margin-bottom: 16px;
         display: flex;
-        column-gap: 18px;
-        background-color: var(--color-gray);
+        align-items: center;
+        background-color: var(--color-black01);
+        border: 1px solid var(--color-black02);
+        padding: 24px;
         border-radius: 12px;
 
         &-avatar {
             width: 200px;
             height: 200px;
-            background-color: var(--color-gray01);
-            border-radius: 12px;
+            border-radius: 50%;
+            background-color: var(--color-black);
         }
 
         &-info {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: start;
+            margin-left: 24px;
+
+            &-top {
+                display: flex;
+                align-items: center;
+                column-gap: 8px;
+            }
         }
 
         &-nickname {
-            margin-bottom: 6px;
-            font-size: 35px;
+            font-size: 28px;
         }
 
         &-role {
@@ -44,89 +40,69 @@
                 background-color: var(--color-red);
             }
         }
-    }
 
-    &__rating {
-        height: 100%;
-        background-color: var(--color-gray);
-        border-radius: 12px;
-        padding: 20px 0;
-
-        &-title {
-            font-size: 35px;
-            border-bottom: 1px solid var(--color-gray01);
-            padding-bottom: 20px;
-            padding-left: 30px;
-            margin-bottom: 15px;
-        }
-
-        &-list {
-            display: grid;
-            width: 733px;
-            grid-template-columns: repeat(2, 1fr);
-            row-gap: 12px;
-            column-gap: 12px;
-            padding: 0 30px;
-        }
-
-        &-item {
-            position: relative;
-            padding: 6px 12px;
-            background-color: var(--color-gray01);
-            border-radius: 12px;
-            width: 330px;
-
-            transition: border-radius 0.3s ease-in;
-
-            &:hover {
-                border-radius: 12px 12px 0 0;
-            }
-        }
-
-        &-wrapper {
-            display: flex;
-            align-items: center;
-            column-gap: 12px;
+        &-soundcloud {
+            font-size: 16px;
 
             transition: opacity 0.3s ease-in;
 
             &:hover {
                 opacity: 0.7;
             }
+        }
+    }
 
-            &.opacity {
+    &__track {
+
+        &-title {
+            margin-bottom: 12px;
+        }
+
+        &-list {
+            display: grid;
+            grid-template-columns: repeat(6, 0fr);
+            column-gap: 28px;
+            row-gap: 20px;
+        }
+
+        &-item {
+            position: relative;
+            width: 185px;
+            height: 315px;
+            background-color: var(--color-black01);
+            border: 1px solid var(--color-black02);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+
+            transition: opacity 0.3s ease-in;
+
+            &:hover {
                 opacity: 0.7;
             }
         }
 
         &-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            cursor: pointer;
+            margin-bottom: 4px;
+            width: 183px;
+            height: 183px;
         }
 
-        &-desc {
-            display: flex;
-            flex-direction: column;
+        &-info {
+            margin-left: 8px;
         }
 
         &-name {
-            margin-bottom: 1px;
-            font-size: 18px;
+            display: block;
+            margin-bottom: 2px;
         }
 
         &-artist {
-            display: flex;
-            flex-wrap: wrap;
-            width: 180px;
-            column-gap: 5px;
-            overflow: hidden;
 
-            &-name {
-                display: block;
+            &-nickname {
                 opacity: 0.7;
-                font-size: 12px;
-                white-space: nowrap;
 
                 transition: opacity 0.3s ease-in;
 
@@ -136,66 +112,10 @@
             }
         }
 
-        &-grade {
+        &-rating {
             position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        &-info {
-            opacity: 0;
-            visibility: hidden;
-            width: 330px;
-            height: 84px;
-            position: absolute;
-            z-index: 999;
-            left: 0;
-            bottom: 0;
-            transform: translateY(100%);
-            background-color: var(--color-gray);
-            border: 3px solid var(--color-gray01);
-            border-radius: 0 0 12px 12px;
-            padding: 6px 12px;
-            display: flex;
-            flex-direction: column;
-
-            transition: opacity 0.3s, visibility 0.3s ease-in;
-
-            &.show {
-                opacity: 1;
-                visibility: visible;
-            }
-        }
-
-        &-link {
-            margin-bottom: 7px;
-            font-size: 14px;
-
-            transition: opacity 0.3s ease-in;
-
-            &:hover {
-                opacity: 0.7;
-            }
-        }
-
-        &-criteria {
-
-            &-list {
-                display: flex;
-                column-gap: 12px;
-            }
-
-            &-item {
-                width: 30px;
-                height: 30px;
-                border: 2px solid var(--color-blue);
-                border-radius: 50%;
-                display: flex;
-                font-size: 16px;
-                justify-content: center;
-                align-items: center;
-            }
+            bottom: 10px;
+            right: 10px;
         }
     }
 }

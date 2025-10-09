@@ -30,7 +30,8 @@ export default function TrackPage() {
               ratingTrackOverall={TrackData.ratingTrack[0].overall}
               ratingTrackCriteria={TrackData.ratingTrack[0].criteria}
               reviews={TrackData.reviews}
-            /> : <TrackSkeleton />
+            /> :
+            <TrackSkeleton />
         }
     </>
   )

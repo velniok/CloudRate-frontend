@@ -35,6 +35,7 @@ export default function App() {
         <Route path='/user/:id' element={<UserPage />} />
       </Routes>
       </div>
+      <footer className="footer"></footer>
     </>
   )
 }

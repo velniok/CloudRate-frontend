@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
 
 export default function UserBlock({ nickname, avatarUrl, role, rating }) {
 
-    const [ratingInfoShow, setRatingInfoShow] = useState(null)
-
     return (
         <section className="user">
-            <div className="container">
-                <div className="user-wrapper">
+            <div className="user-wrapper">
+                <div className="container">
                     <div className="user__profile">
                         {
                             avatarUrl ?
@@ -16,49 +14,40 @@ export default function UserBlock({ nickname, avatarUrl, role, rating }) {
                             : <div className="user__profile-avatar"></div>
                         }
                         <div className="user__profile-info">
-                            <span className="user__profile-nickname">{nickname}</span>
-                            {
-                                role === 'admin' ?
-                                <span className="user__profile-role user__profile-role--admin">Админ</span>
-                                : <span className="user__profile-role">Пользователь</span>
-                            }
+                            <div className="user__profile-info-top">
+                                <span className="user__profile-nickname">{nickname}</span>
+                                {
+                                    role === 'admin' ?
+                                    <span className="user__profile-role user__profile-role--admin">Админ</span>
+                                    : <span className="user__profile-role">Пользователь</span>
+                                }
+                            </div>
+                            <a href="#!" className="user__profile-soundcloud">SoundCloud</a>
                         </div>
                     </div>
-                    <div className="user__rating">
-                        <h2 className="user__rating-title">Оценки пользователя</h2>
-                        <ul className="user__rating-list">
+                    <div className="user__track">
+                        <h2 className="user__track-title title">Оценки пользователя</h2>
+                        <ul className="user__track-list">
                             {
-                                rating.length === 0 &&
-                                <span className="user__rating-none">У пользователя еще нет оценок</span>
-                            }
-                            {
-                                rating.map((e, index) => (
-                                    <li className="user__rating-item" key={e.track._id} onMouseLeave={() => setRatingInfoShow(null)}>
-                                        <div className={`user__rating-wrapper ${ratingInfoShow === index ? 'opacity' : ''}`} onMouseEnter={() => setRatingInfoShow(index)}>
-                                            <img src={`${import.meta.env.VITE_API_URL}${e.track.avatarUrl}`} alt="" className="user__rating-avatar" />
-                                            <div className="user__rating-desc">
-                                                <span className="user__rating-name">{e.track.name}</span>
-                                                <div className="user__rating-artist">
-                                                    {
-                                                        e.track.artist.map(e => (
-                                                            <Link to={`/artist/${e.artistId}`} key={e.artistId}>
-                                                            <span className="user__rating-artist-name">{e.name}</span>
-                                                            </Link>
-                                                        ))
-                                                    }
-                                                </div>
-                                                <span className="user__rating-grade rating-overall">{e.ratingTrack.ratingOverall}</span>
-                                            </div>
-                                        </div>
-                                        <div className={`user__rating-info ${ratingInfoShow === index ? 'show' : ''}`}>
-                                            <Link to={`/track/${e.track._id}`} className="user__rating-link">Перейти к треку</Link>
-                                            <ul className="user__rating-criteria-list">
+                                rating.map(e => (
+                                    <li className="user__track-item" key={e.track._id}>
+                                        <Link to={`/track/${e.track._id}`}>
+                                            <img src={`${import.meta.env.VITE_API_URL}${e.track.avatarUrl}`} alt="" className="user__track-avatar" />
+                                        </Link>
+                                        <div className="user__track-info">
+                                            <span className="user__track-name">{e.track.name}</span>
+                                            <ul className="user__track-artist-list">
                                                 {
-                                                    e.ratingTrack.ratingCriteria.map((e, index) => (
-                                                        <span className="user__rating-criteria-item" key={index}>{e}</span>
+                                                    e.track.artist.map(e => (
+                                                        <li className="user__track-artist-item" key={e.artistId}>
+                                                            <Link to={`/artist/${e.artistId}`}>
+                                                                <span className="user__track-artist-nickname">{e.name}</span>
+                                                            </Link>
+                                                        </li>
                                                     ))
                                                 }
                                             </ul>
+                                            <span className="user__track-rating rating-overall">{e.ratingTrack.ratingOverall}</span>
                                         </div>
                                     </li>
                                 ))

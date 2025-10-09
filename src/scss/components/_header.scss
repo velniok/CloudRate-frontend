@@ -1,31 +1,38 @@
 .header {
 
     &-wrapper {
-        padding: 10px 0;
-        border-bottom: solid 2px var(--color-gray);
+        margin-bottom: 48px;
+        padding: 4px 0;
+        border-bottom: 1px solid var(--color-black02);
     }
 
-    &__top {
+    &-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-
+    
     &__logo {
+
+        transition: opacity 0.3s ease-in;
+        
+        &:hover {
+            opacity: 0.7;
+        }
 
         &-link {
             display: flex;
             align-items: center;
-            column-gap: 5px;
-        }
-
-        &-text {
-            font-size: 30px;
-            font-weight: 700;
+            column-gap: 7px;
         }
 
         &-img {
             width: 50px;
+        }
+
+        &-text {
+            font-size: 22px;
+            font-weight: 700;
         }
     }
 
@@ -33,51 +40,41 @@
 
         &-list {
             display: flex;
-            align-items: center;
-            column-gap: 20px;
+            column-gap: 32px;
         }
 
         &-item {
-            position: relative;
-            font-size: 17px;
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.5;
 
-            &::before {
-                position: absolute;
-                content: '';
-                opacity: 0;
-                bottom: -5px;
-                left: -5%;
-                width: 110%;
-                height: 3px;
-                background-color: var(--color-blue);
-                border-radius: 3px;
+            transition: opacity 0.3s ease-in;
 
-                transition: opacity 0.3s ease-in;
+            &:hover {
+                opacity: 1;
             }
 
-            &--active {
-
-                &::before {
-                    opacity: 1;
-                }
+            &.active {
+                position: relative;
+                opacity: 1;
+                font-weight: 600;
 
                 & a {
                     cursor: default;
                 }
-            }
-
-            &:hover {
 
                 &::before {
-                    opacity: 0.7;
+                    position: absolute;
+                    content: '';
+                    width: 110%;
+                    bottom: -21px;
+                    left: -5%;
+                    height: 2px;
+                    background-color: var(--color-white);
+                    border-radius: 50%;
                 }
             }
         }
-    }
-
-    &__btns {
-        display: flex;
-        column-gap: 15px;
     }
 
     &__profile {
@@ -88,7 +85,7 @@
             cursor: pointer;
             width: 50px;
             height: 50px;
-            background-color: var(--color-gray01);
+            background-color: var(--color-black01);
             border-radius: 50%;
             transition: opacity 0.3s ease-in;
 
@@ -102,14 +99,14 @@
             visibility: hidden;
             position: absolute;
             right: 0;
-            bottom: -5px;
+            bottom: -4px;
             transform: translateY(100%);
             width: 300px;
             height: auto;
-            padding: 10px 0;
-            background-color: var(--color-gray);
-            border-radius: 12px;
-            border: 2px solid var(--color-gray01);
+            padding: 12px 18px;
+            background-color: var(--color-black01);
+            border-radius: 8px;
+            border: 2px solid var(--color-black02);
 
             transition: opacity 0.3s, visibility 0.3s ease-in;
 
@@ -123,7 +120,7 @@
             position: absolute;
             cursor: pointer;
             top: 5px;
-            right: 10px;
+            right: 15px;
             font-size: 22px;
             transform: rotate(45deg);
 
@@ -135,14 +132,13 @@
         }
 
         &-nickname {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
             column-gap: 7px;
             height: 38px;
-            padding-bottom: 10px;
-            padding-left: 15px;
-            border-bottom: 2px solid var(--color-gray01);
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--color-black02);
         }
 
         &-role {
@@ -166,15 +162,14 @@
         &--action {
             display: block;
             cursor: pointer;
-            padding-left: 15px;
 
-            transition: color 0.3s ease-in;
+            transition: color 0.3s, opacity 0.3s ease-in;
         }
 
         &-page {
 
             &:hover {
-                color: var(--color-blue);
+                opacity: 0.7;
             }
         }
 

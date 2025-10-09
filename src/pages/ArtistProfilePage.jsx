@@ -21,8 +21,7 @@ export default function ArtistProfilePage() {
   return (
     <>
       {
-        ArtistStatus ?
-          <ArtistProfileSkeleton /> :
+        ArtistStatus ? <ArtistProfileSkeleton /> :
           <ArtistProfileBlock
             key={ArtistData._id}
             name={ArtistData.name}

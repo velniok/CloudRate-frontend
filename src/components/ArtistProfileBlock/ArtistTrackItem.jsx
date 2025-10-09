@@ -4,28 +4,25 @@ import { Link } from 'react-router'
 export default function ArtistTrackItem({ name, id, avatarUrl, artist, ratingTrackOverall }) {
 
   return (
-    <li className="artist__track-item">
+    <li className="artist__track-item" key={id}>
         <Link to={`/track/${id}`}>
-            <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="artist__track-img" />
+            <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="artist__track-avatar" />
         </Link>
         <div className="artist__track-info">
-            <Link to={`/track/${id}`}>
-                <span className="artist__track-name">{name}</span>
-            </Link>
-            <div className="artist__track-artist">
+            <span className="artist__track-name">{name}</span>
+            <ul className="artist__track-artist-list">
                 {
                     artist.map(e => (
-                        <Link to={`/artist/${e._id}`} key={e._id}>
-                            <div className="artist__track-artist-wrapper">
-                                <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt={e.name} className="artist__track-artist-avatar" />
-                                <span className="artist__track-artist-name" key={e._id}>{e.name}</span>
-                            </div>
-                        </Link>
+                        <li className="artist__track-artist-item" key={e._id}>
+                            <Link to={`/artist/${e._id}`}>
+                                <span className="artist__track-artist-nickname">{e.name}</span>
+                            </Link>
+                        </li>
                     ))
                 }
-            </div>
+            </ul>
+            <span className="artist__track-rating rating-overall">{ratingTrackOverall.avgRating}</span>
         </div>
-        <span className="artist__track-rating">{ratingTrackOverall.avgRating}</span>
     </li>
   )
 }
