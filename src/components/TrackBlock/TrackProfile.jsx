@@ -10,8 +10,10 @@ export default function TrackProfile({ name, avatarUrl, artist, ratingTrackOvera
         <div className="track__profile">
             <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="track__profile-avatar" />
             <div className="track__profile-info">
-                <span className="track__profile-nickname">{name}</span>
-                <a href="#!" className="track__profile-soundcloud">SoundCloud</a>
+                <div className="track__profile-bio">
+                    <span className="track__profile-nickname">{name}</span>
+                    <a href="#!" className="track__profile-soundcloud">SoundCloud</a>
+                </div>
                 {
                     ratingTrackOverall.avgRating === 0 ? <span className="track__profile-rating-none">Оценок на этот трек еще нет. Будь первым, кто ее поставит!</span>
                     :

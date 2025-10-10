@@ -1,15 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router'
 
-export default function TrackCommentItem({ avatarUrl, nickname, ratingOverall, review }) {
+export default function TrackCommentItem({ avatarUrl, nickname, ratingOverall, review, id }) {
     return (
         <li className="track__comment-item">
             <div className="track__comment-user">
-                {
-                    avatarUrl ? 
-                    <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="track__comment-user-avatar" />
-                    : <div className="track__comment-user-avatar"></div>
-                }
-                <span className="track__comment-user-nickname">{nickname}</span>
+                <Link to={`/user/${id}`}>
+                    {
+                        avatarUrl ? 
+                        <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="track__comment-user-avatar" />
+                        : <div className="track__comment-user-avatar"></div>
+                    }
+                </Link>
+                <Link to={`/user/${id}`}><span className="track__comment-user-nickname">{nickname}</span></Link>
                 <span className="track__comment-user-rating rating-overall">{ratingOverall}</span>
             </div>
             <p className="track__comment-text">{review}</p>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsAuth } from '../../redux/slices/auth';
+import { logout, selectIsAuth } from '../../redux/slices/auth';
 import { Link } from 'react-router';
 import HeaderProfileInfo from './HeaderProfileInfo';
 

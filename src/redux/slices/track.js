@@ -11,10 +11,16 @@ export const fetchTopRatingTracks = createAsyncThunk('track/fetchTopRatingTracks
     return data
 })
 
+export const fetchLatestComment = createAsyncThunk('track/fetchLatestComment', async () => {
+    const { data } = await axios.get('latest-comment')
+    return data
+})
+
 const initialState = {
     data: null,
     status: 'loading',
     topRatingTracks: null,
+    latestComments: null,
 }
 
 const trackSlice = createSlice({
@@ -46,6 +52,19 @@ const trackSlice = createSlice({
         .addCase(fetchTopRatingTracks.rejected, (state) => {
             state.status = 'error',
             state.topRatingTracks = null
+        })
+
+        .addCase(fetchLatestComment.pending, (state) => {
+            state.status = 'loading',
+            state.latestComments = null
+        })
+        .addCase(fetchLatestComment.fulfilled, (state, action) => {
+            state.status = 'loaded',
+            state.latestComments = action.payload
+        })
+        .addCase(fetchLatestComment.rejected, (state) => {
+            state.status = 'error',
+            state.latestComments = null
         })
     }
 })
