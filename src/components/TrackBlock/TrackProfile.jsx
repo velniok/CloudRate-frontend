@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router'
+import iconArrowDown from '../../assets/icons/icon-arrow-down.svg'
 
-export default function TrackProfile({ name, avatarUrl, artist, ratingTrackOverall }) {
+export default function TrackProfile({ name, avatarUrl, artist, ratingTrackOverall, ratingTrackCriteria }) {
+
+    const [ratingInfoOpen, serRatingInfoOpen] = useState(false)
+
     return (
         <div className="track__profile">
             <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="track__profile-avatar" />
@@ -11,7 +15,23 @@ export default function TrackProfile({ name, avatarUrl, artist, ratingTrackOvera
                 {
                     ratingTrackOverall.avgRating === 0 ? <span className="track__profile-rating-none">Оценок на этот трек еще нет. Будь первым, кто ее поставит!</span>
                     :
-                    <span className="track__profile-rating rating-overall">{ratingTrackOverall.avgRating}</span>
+                    <>
+                        <div className="track__profile-rating">
+                            <span className="track__profile-rating-overall rating-overall">{ratingTrackOverall.avgRating}</span>
+                            <img src={iconArrowDown} alt="" className={`track__profile-rating-icon ${ratingInfoOpen ? 'open' : ''}`} onClick={() => serRatingInfoOpen(!ratingInfoOpen)} />
+                        </div>
+                        <div className={`track__profile-rating-info ${ratingInfoOpen ? 'open' : ''}`}>
+                            <ul className="track__profile-rating-list">
+                                {
+                                    ratingTrackCriteria.map((e, index) => (
+                                        <li className="track__profile-rating-item" key={index}>
+                                            <span className="track__profile-rating-criteria rating-overall">{e.avgRating}</span>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                    </>
                 }
                 <ul className="track__profile-artist-list">
                     {

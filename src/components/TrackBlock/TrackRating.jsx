@@ -77,15 +77,15 @@ export default function TrackRating({ id }) {
             </ul>
             <div className="track__rating-comment">
                 <div className="track__rating-comment-top">
-                    <h3 className="track__rating-comment-title">Комментарий</h3>
+                    <h3 className="track__rating-comment-title">Написать обзор</h3>
                     <span className="track__rating-comment-desc">(Не обязательно)</span>
                     <img src={iconArrowDown} alt="" className={`track__rating-comment-icon ${reviewOpen ? 'open' : ''}`} onClick={() => setReviewOpen(!reviewOpen)} />
                 </div>
                 <div className={`track__rating-comment-content ${reviewOpen ? 'open' : ''}`}>
                     {
-                        reviewError && <span className="track__rating-comment-error">Комментарий должен быть минимум 300 символов</span>
+                        reviewError && <span className="track__rating-comment-error">Обзор должен быть минимум 300 символов</span>
                     }
-                    <textarea className={`track__rating-comment-textarea ${reviewError ? 'error' : ''}`} placeholder="Напишите комментарий к треку (от 300 до 3000 символов)" maxLength="3000" value={review} onChange={e => setReview(e.target.value)} onClick={() => setReviewError(false)}></textarea>
+                    <textarea className={`track__rating-comment-textarea ${reviewError ? 'error' : ''}`} placeholder="Напишите обзор к треку (от 300 до 3000 символов)" maxLength="3000" value={review} onChange={e => setReview(e.target.value)} onClick={() => setReviewError(false)}></textarea>
                     <span className="track__rating-comment-count">{review.length} / 3000</span>
                 </div>
             </div>

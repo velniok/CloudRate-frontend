@@ -27,7 +27,10 @@ export default function UserSkeleton() {
                                             <div className="user__track-artist">
                                                 <Skeleton className="user__track-artist-nickname" width="150px" height="17px" radius="8px" />
                                             </div>
-                                            <Skeleton className="user__track-rating rating-overall" />
+                                            <div className="user__track-rating">
+                                                <span className="user__track-rating-text">Оценка пользователя:</span>
+                                                <Skeleton className="user__track-rating-overall rating-overall" />
+                                            </div>
                                         </div>
                                     </li>
                                 ))

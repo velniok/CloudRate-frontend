@@ -12,7 +12,16 @@ export default function UserTrack({ rating }) {
                     <ul className="user__track-list">
                         {
                             rating.map(e => (
-                                <UserTrackItem key={e.track._id} id={e.track._id} avatarUrl={e.track.avatarUrl} name={e.track.name} artist={e.track.artist} ratingOverall={e.ratingTrack.ratingOverall} />
+                                <UserTrackItem
+                                    key={e.track._id}
+                                    id={e.track._id}
+                                    avatarUrl={e.track.avatarUrl}
+                                    name={e.track.name}
+                                    artist={e.track.artist}
+                                    ratingOverall={e.ratingTrack.ratingOverall}
+                                    ratingCriteria={e.ratingTrack.ratingCriteria}
+                                    review={e.ratingTrack.review}
+                                />
                             ))
                         }
                     </ul>

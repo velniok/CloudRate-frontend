@@ -9,7 +9,7 @@ export default function TrackBlock({ name, avatarUrl, id, artist, ratingTrackOve
         <section className="track">
             <div className="track-wrapper">
                 <div className="container">
-                    <TrackProfile name={name} avatarUrl={avatarUrl} artist={artist} ratingTrackOverall={ratingTrackOverall} />
+                    <TrackProfile name={name} avatarUrl={avatarUrl} artist={artist} ratingTrackOverall={ratingTrackOverall} ratingTrackCriteria={ratingTrackCriteria} />
                     <div className="track-content">
                         <TrackComment reviews={reviews} />
                         <TrackRating id={id} />
