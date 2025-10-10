@@ -3,6 +3,7 @@ import UserBlock from '../components/UserBlock'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import { fetchGetUser } from '../redux/slices/user'
+import UserSkeleton from '../components/UserBlock/UserSkeleton'
 
 export default function UserPage() {
 
@@ -19,7 +20,10 @@ export default function UserPage() {
   return (
     <>
       {
-        UserStatus && <UserBlock key={UserData._id} nickname={UserData.nickname} avatarUrl={UserData.avatarUrl} role={UserData.role} rating={UserData.ratingTracks} />
+        UserStatus ?
+        <UserBlock key={UserData._id} nickname={UserData.nickname} avatarUrl={UserData.avatarUrl} role={UserData.role} rating={UserData.ratingTracks} />
+        :
+        <UserSkeleton />
       }
     </>
   )

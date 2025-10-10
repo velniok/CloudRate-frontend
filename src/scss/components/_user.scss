@@ -13,7 +13,7 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background-color: var(--color-black);
+            background-color: var(--color-gray);
         }
 
         &-info {
@@ -27,6 +27,7 @@
         }
 
         &-nickname {
+            margin-bottom: 2px;
             font-size: 28px;
         }
 
