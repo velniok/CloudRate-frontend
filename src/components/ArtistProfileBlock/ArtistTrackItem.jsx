@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 export default function ArtistTrackItem({ name, id, avatarUrl, artist, ratingTrackOverall }) {
 
   return (
-    <li className="artist__track-item" key={id}>
+    <li className="artist__track-item">
         <Link to={`/track/${id}`}>
             <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="artist__track-avatar" />
         </Link>

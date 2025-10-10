@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './scss/index.scss'
-import Header from './components/Header'
+import HeaderBlock from './components/HeaderBlock/index'
 import { Route, Routes } from 'react-router'
 import HomePage from './pages/HomePage'
 import ArtistsPage from './pages/ArtistsPage'
@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <>
-      <Header />
+      <HeaderBlock />
       <div className="main">
       <Routes>
         <Route path='/' element={<HomePage />} />
