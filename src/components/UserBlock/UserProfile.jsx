@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import editIcon from '../../assets/icons/edit-icon.svg'
 import UserProfileEdit from './UserProfileEdit'
 import { useSelector } from 'react-redux'
+import { selectIsAuth } from '../../redux/slices/auth'
 
 export default function UserProfile({ avatarUrl, name, role, id }) {
 
     const AuthData = useSelector(state => state.auth.data)
+    const isAuth = useSelector(selectIsAuth)
 
     const [editShow, setEditShow] = useState(false)
 
@@ -28,6 +30,7 @@ export default function UserProfile({ avatarUrl, name, role, id }) {
                 <a href="#!" className="user__profile-soundcloud">SoundCloud</a>
             </div>
             {
+                isAuth &&
                 id === AuthData.user._id &&
                 <>
                     <img src={editIcon} alt="" className="user__profile-edit-icon" onClick={() => setEditShow(true)} />
