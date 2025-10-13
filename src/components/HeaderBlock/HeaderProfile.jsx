@@ -26,7 +26,7 @@ export default function HeaderProfile() {
                 UserStatus === 'loaded' &&
                     <>
                         {
-                            UserData.avatarUrl ? <img src={UserData.user.avatarUrl} alt="" className="header__profile-avatar" onClick={() => setOpenProfile(!openProfile)} /> : <div className="header__profile-avatar" onClick={() => setOpenProfile(!openProfile)} ></div>
+                            UserData.user.avatarUrl ? <img src={`${import.meta.env.VITE_API_URL}${UserData.user.avatarUrl}`} alt="" className="header__profile-avatar" onClick={() => setOpenProfile(!openProfile)} /> : <div className="header__profile-avatar" onClick={() => setOpenProfile(!openProfile)} ></div>
                         }
                         <HeaderProfileInfo onClickLogout={onClickLogout} UserData={UserData} openProfile={openProfile} setOpenProfile={setOpenProfile} />
                     </>
