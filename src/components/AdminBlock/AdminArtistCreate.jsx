@@ -45,15 +45,11 @@ export default function AdminArtistCreate({ modalOpen, setModalOpen }) {
     }
  
   return (
-    <div className={`admin-artist__create ${modalOpen ? 'show' : ''}`} onClick={(e) => {
-        if (e.target.className === 'admin-artist__create show') {
-            setModalOpen(false)
-        }
-    }}>
+    <div className={`admin-artist__create ${modalOpen ? 'show' : ''}`}>
         <div className="admin-artist__create-wrapper">
             <div className="admin-artist__create-top">
-                <h3 className="admin-artist__create-title">Добавить нового артиста</h3>
-                <button className="admin-artist__create-close btn--red" onClick={() => setModalOpen(false)}>Закрыть</button>
+                <h3 className="admin-artist__create-title title">Добавить нового артиста</h3>
+                <button className="admin-artist__create-close" onClick={() => setModalOpen(false)}>Закрыть</button>
             </div>
             <form action="" className="admin-artist__create-form">
                 <ul className="admin-artist__create-list">

@@ -87,15 +87,11 @@ export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData 
     }
  
   return (
-    <div className={`admin-track__create ${modalOpen ? 'show' : ''}`} onClick={(e) => {
-        if (e.target.className === 'admin-track__create show') {
-            setModalOpen(false)
-        }
-    }}>
+    <div className={`admin-track__create ${modalOpen ? 'show' : ''}`}>
 
         <div className="admin-track__create-wrapper">
             <div className="admin-track__create-top">
-                <h3 className="admin-track__create-title">Добавить новый трек</h3>
+                <h3 className="admin-track__create-title title">Добавить новый трек</h3>
                 <button className="admin-track__create-close btn--red" onClick={() => setModalOpen(false)}>Закрыть</button>
             </div>
             <form action="" className="admin-track__create-form">

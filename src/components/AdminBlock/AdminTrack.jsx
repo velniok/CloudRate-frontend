@@ -11,19 +11,13 @@ export default function AdminTrack({ TracksData, ArtistsData }) {
 
   return (
     <div className="admin-track">
-        <div className="admin-track__list">
-            <div className="admin-track__list-top">
-                <h3 className="admin-track__title">Список треков</h3>
-                <button className="admin-track__btn btn--green" onClick={() => setModalOpen(true)}>Добавить новый трек</button>
+        <div className="admin-track-wrapper">
+            <div className="admin-track-top">
+                <h3 className="admin-track-title title">Список треков</h3>
+                <button className="admin-track-btn" onClick={() => setModalOpen(true)}>Добавить новый трек</button>
             </div>
             <AdminTrackCreate modalOpen={modalOpen} setModalOpen={setModalOpen} ArtistsData={ArtistsData} />
-            <div className="admin-track__list-wrapper">
-                <li className="admin-track__list-item">
-                    <span className="admin-track__list-title admin-track__list-element--avatar">Обложка</span>
-                    <span className="admin-track__list-title admin-track__list-element--name">Название</span>
-                    <span className="admin-track__list-title admin-track__list-element--artist">Атрист(-ы)</span>
-                    <span className="admin-track__list-title admin-track__list-element--options">Опции</span>
-                </li>
+            <div className="admin-track__list">
                 {
                     trackStatus === 'loaded' &&
                     TracksData.map(e => {

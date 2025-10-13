@@ -36,14 +36,10 @@ export default function AdminArtistEdit({ openEdit, setOpenEdit, name, avatarUrl
         }
 
   return (
-    <div className={`admin-track__edit ${openEdit && 'show'}`} onClick={(e) => {
-        if (e.target.className === 'admin-track__edit show') {
-            setOpenEdit(false)
-        }
-    }}>
+    <div className={`admin-track__edit ${openEdit && 'show'}`}>
         <div className="admin-track__edit-wrapper">
             <div className="admin-track__edit-top">
-                <h3 className="admin-track__edit-title">Изменить трек:<span>{name}</span></h3>
+                <h3 className="admin-track__edit-title title">Изменить трек:<span className="admin-track__edit-title-nickname">{name}</span></h3>
                 <button className="admin-track__edit-close btn--red" onClick={() => setOpenEdit(false)}>Закрыть</button>
             </div>
             <form action="" className="admin-track__edit-form">

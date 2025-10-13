@@ -38,15 +38,11 @@ export default function AdminArtistEdit({ openEdit, setOpenEdit, name, avatarUrl
         }
 
   return (
-    <div className={`admin-artist__edit ${openEdit && 'show'}`} onClick={(e) => {
-        if (e.target.className === 'admin-artist__edit show') {
-            setOpenEdit(false)
-        }
-    }}>
+    <div className={`admin-artist__edit ${openEdit && 'show'}`}>
         <div className="admin-artist__edit-wrapper">
             <div className="admin-artist__edit-top">
-                <h3 className="admin-artist__edit-title">Изменить артиста:<span>{name}</span></h3>
-                <button className="admin-artist__edit-close btn--red" onClick={() => setOpenEdit(false)}>Закрыть</button>
+                <h3 className="admin-artist__edit-title title">Изменить артиста:<span className="admin-artist__edit-title-nickname">{name}</span></h3>
+                <button className="admin-artist__edit-close" onClick={() => setOpenEdit(false)}>Закрыть</button>
             </div>
             <form action="" className="admin-artist__edit-form">
                 <ul className="admin-artist__edit-list">
@@ -71,7 +67,7 @@ export default function AdminArtistEdit({ openEdit, setOpenEdit, name, avatarUrl
                         <input type="file" className="admin-artist__edit-input" ref={inputAvatarRef} onChange={onChangeAvatar} hidden />
                     </li>
                 </ul>
-                <button className="admin-artist__edit-submit btn--green" type='button' onClick={() => {onClickArtistEdit(); setOpenEdit(false)}}>Изменить артиста</button>
+                <button className="admin-artist__edit-submit" type='button' onClick={() => {onClickArtistEdit(); setOpenEdit(false)}}>Изменить артиста</button>
             </form>
         </div>
     </div>

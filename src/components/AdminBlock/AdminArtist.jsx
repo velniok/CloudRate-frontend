@@ -11,37 +11,31 @@ export default function AdminArtist({ ArtistsData, TracksData }) {
     const artistStatus = useSelector((state) => state.artistAdmin.status)
     const trackStatus = useSelector((state) => state.trackAdmin.status)
 
-  return (
-    <div className="admin-artist">
-        <div className="admin-artist__list">
-            <div className="admin-artist__list-top">
-              <h3 className="admin-artist__list-title">Список артистов</h3>
-              <button className="admin-artist__list-btn btn--green" onClick={() => setModalOpen(true)}>Добавить нового артиста</button>
-            </div>
-            <AdminArtistCreate modalOpen={modalOpen} setModalOpen={setModalOpen} />
-            <div className="admin-artist__list-wrapper">
-                <li className="admin-artist__list-item">
-                    <span className="admin-artist__list-title admin-artist__list-element--avatar">Аватарка</span>
-                    <span className="admin-artist__list-title admin-artist__list-element--name">Никнейм</span>
-                    <span className="admin-artist__list-title admin-artist__list-element--artist">Трек(-и)</span>
-                    <span className="admin-artist__list-title admin-artist__list-element--options">Опции</span>
-                </li>
-              {
-                artistStatus !== 'loading' && trackStatus !== 'loading' &&
-                ArtistsData.map(e => {
-                  return <AdminArtistList
-                    key={e._id}
-                    name={e.name}
-                    avatarUrl={e.avatarUrl}
-                    id={e._id}
-                    tracks={e.tracks}
-                    soundCloudUrl={e.soundCloudUrl}
-                    TracksData={TracksData}
-                  />
-                })
-              }
+    return (
+        <div className="admin-artist">
+            <div className="admin-artist-wrapper">
+                <div className="admin-artist-top">
+                    <h3 className="admin-artist-title title">Список артистов</h3>
+                    <button className="admin-artist-btn" onClick={() => setModalOpen(true)}>Добавить нового артиста</button>
+                </div>
+                <AdminArtistCreate modalOpen={modalOpen} setModalOpen={setModalOpen} />
+                <ul className="admin-artist__list">
+                    {
+                        artistStatus !== 'loading' && trackStatus !== 'loading' &&
+                        ArtistsData.map(e => {
+                            return <AdminArtistList
+                                key={e._id}
+                                name={e.name}
+                                avatarUrl={e.avatarUrl}
+                                id={e._id}
+                                tracks={e.tracks}
+                                soundCloudUrl={e.soundCloudUrl}
+                                TracksData={TracksData}
+                            />
+                        })
+                    }
+                </ul>
             </div>
         </div>
-    </div>
-  )
+    )
 }
