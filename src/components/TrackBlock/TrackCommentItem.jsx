@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-export default function TrackCommentItem({ avatarUrl, nickname, ratingOverall, review, id }) {
+export default function TrackCommentItem({ avatarUrl, name, ratingOverall, review, id }) {
     return (
         <li className="track__comment-item">
             <div className="track__comment-user">
@@ -12,7 +12,7 @@ export default function TrackCommentItem({ avatarUrl, nickname, ratingOverall, r
                         : <div className="track__comment-user-avatar"></div>
                     }
                 </Link>
-                <Link to={`/user/${id}`}><span className="track__comment-user-nickname">{nickname}</span></Link>
+                <Link to={`/user/${id}`}><span className="track__comment-user-nickname">{name}</span></Link>
                 <span className="track__comment-user-rating rating-overall">{ratingOverall}</span>
             </div>
             <p className="track__comment-text">{review}</p>

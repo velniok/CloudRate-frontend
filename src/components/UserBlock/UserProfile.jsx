@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function UserProfile({ avatarUrl, nickname, role }) {
+export default function UserProfile({ avatarUrl, name, role }) {
     return (
         <div className="user__profile">
             {
@@ -10,7 +10,7 @@ export default function UserProfile({ avatarUrl, nickname, role }) {
             }
             <div className="user__profile-info">
                 <div className="user__profile-info-top">
-                    <span className="user__profile-nickname">{nickname}</span>
+                    <span className="user__profile-nickname">{name}</span>
                     {
                         role === 'admin' ?
                         <span className="user__profile-role user__profile-role--admin">Админ</span>

@@ -15,7 +15,7 @@ export default function LatestCommentItem({ user, review, track, rating }) {
                     }
                 </Link>
                 <Link to={`/user/${user.id}`}>
-                    <span className="latest-comment__card-user-nickname">{user.nickname}</span>
+                    <span className="latest-comment__card-user-nickname">{user.name}</span>
                 </Link>
                 <span className="latest-comment__card-rating rating-overall">{rating.ratingOverall}</span>
             </div>

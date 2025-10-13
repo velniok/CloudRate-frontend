@@ -21,7 +21,7 @@ export default function UserPage() {
     <>
       {
         UserStatus ?
-        <UserBlock key={UserData._id} nickname={UserData.nickname} avatarUrl={UserData.avatarUrl} role={UserData.role} rating={UserData.ratingTracks} />
+        <UserBlock key={UserData._id} name={UserData.name} avatarUrl={UserData.avatarUrl} role={UserData.role} rating={UserData.ratingTracks} />
         :
         <UserSkeleton />
       }

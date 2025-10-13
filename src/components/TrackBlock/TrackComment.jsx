@@ -13,7 +13,7 @@ export default function TrackComment({ reviews }) {
                         <ul className="track__comment-list">
                             {
                                 reviews.map(e => (
-                                    <TrackCommentItem key={e.userId} id={e.userId} avatarUrl={e.reviewUser.avatarUrl} nickname={e.reviewUser.nickname} ratingOverall={e.rating.ratingOverall} review={e.review} />
+                                    <TrackCommentItem key={e.userId} id={e.userId} avatarUrl={e.reviewUser.avatarUrl} name={e.reviewUser.name} ratingOverall={e.rating.ratingOverall} review={e.review} />
                                 ))
                             }
                         </ul>
