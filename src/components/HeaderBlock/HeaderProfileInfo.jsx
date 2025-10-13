@@ -6,7 +6,7 @@ export default function HeaderProfileInfo({ onClickLogout, openProfile, setOpenP
         <div className={`header__profile-info ${openProfile ? 'show' : ''}`}>
             <span className="header__profile-close" onClick={() => setOpenProfile(false)} >+</span>
             <span className="header__profile-nickname">
-                {UserData.user.nickname}
+                {UserData.user.name}
                 {
                     UserData.user.role === 'admin' &&
                     <span className="header__profile-role header__profile-role--admin">{UserData.user.role}</span>
