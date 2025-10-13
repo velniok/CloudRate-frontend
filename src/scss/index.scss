@@ -1,14 +1,21 @@
 @use './base';
 
+@use './components/skeleton';
+
 @use './components/header';
+@use './components/footer';
+
 @use './components/top-tracks';
-@use './components/artists';
+@use './components/latest-comment';
+
 @use './components/artist';
 @use './components/track';
+
 @use './components/login';
 @use './components/reg';
+
 @use './components/admin';
-@use './components/skeleton';
+
 @use './components/user';
-@use './components/latest-comment';
-@use './components/footer';
+
+@use './components/search';

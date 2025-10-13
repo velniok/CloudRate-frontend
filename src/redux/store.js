@@ -5,6 +5,7 @@ import { trackAdminReducer } from './slices/trackAdmin'
 import { artistReducer } from './slices/artist'
 import { trackReducer } from './slices/track'
 import { userReducer } from './slices/user'
+import { searchReducer } from './slices/search'
 
 const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
         trackAdmin: trackAdminReducer,
         track: trackReducer,
         user: userReducer,
+        search: searchReducer,
     }
 })
 
