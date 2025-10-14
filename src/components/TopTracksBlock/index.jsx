@@ -12,9 +12,9 @@ export default function TopTracksBlock() {
     const dispatch = useDispatch()
     
     const [cardPos, setCardPost] = useState(0)
-    const [width, setWidth] = useState(0)
-    const [columnGap, setColumnGap] = useState(0)
-    const [posMultiplier, setPosMultiplier] = useState(0)
+    const [cardListWidth, setCardListWidth] = useState(0)
+    const [cardWidth, setCardWidth] = useState(0)
+    const [cardPosMultipler, setCardPosMultipler] = useState(0)
 
     const TopRatingTracks = useSelector(state => state.track.topRatingTracks)
 
@@ -22,17 +22,21 @@ export default function TopTracksBlock() {
         dispatch(fetchTopRatingTracks())
     }, [])
 
-    const sliderNext = () => {
-        if (width === 145) {
-            setColumnGap(10)
-            setPosMultiplier(1)
+    const cardRef = useRef(null)
+    const cardListRef = useRef(null)
+
+    useEffect(() => {
+        setCardListWidth(cardListRef.current.offsetWidth)
+        setCardWidth(cardRef.current.offsetWidth)
+        if (cardWidth > 650) {
+            setCardPosMultipler(0.2)
         } else {
-            setColumnGap(15)
-            setPosMultiplier(3)
+            setCardPosMultipler(0.1)
         }
-        if (cardPos < 3 && width === 195) {
-            setCardPost(prev => prev += 1)
-        } else if (cardPos < 13 && width === 145) {
+    }, [cardPos])
+
+    const sliderNext = () => {
+        if ((cardPos * cardPosMultipler) * (cardListWidth - cardWidth) < cardListWidth - cardWidth) {
             setCardPost(prev => prev += 1)
         }
     }
@@ -49,12 +53,12 @@ export default function TopTracksBlock() {
             <div className="container">
                 <div className="top-tracks-inner">
                     <h2 className="top-tracks-title title">Самые оцениваемые треки</h2>
-                    <div className="top-tracks__card">
-                        <ul className="top-tracks__card-list" style={{ marginLeft: `-${ (cardPos * ((width + columnGap) * posMultiplier)) }px` }}>
+                    <div className="top-tracks__card" ref={cardRef}>
+                        <ul className="top-tracks__card-list" ref={cardListRef} style={{ transform: `translateX(-${ (cardPos * cardPosMultipler) * (cardListWidth - cardWidth) }px)` }}>
                             {
                                 TopRatingTracks ?
                                 TopRatingTracks.map(e => (
-                                    <TopTracksItem key={e._id} name={e.name} avatarUrl={e.avatarUrl} id={e._id} artist={e.artist} ratingTrack={e.ratingTrack} setWidth={setWidth} />
+                                    <TopTracksItem key={e._id} name={e.name} avatarUrl={e.avatarUrl} id={e._id} artist={e.artist} ratingTrack={e.ratingTrack} />
                                 ))
                                 : [...Array(7)].map((e, index) => (
                                     <TopTracksItemSkeleton key={index} />
@@ -64,7 +68,7 @@ export default function TopTracksBlock() {
                         <button className={`top-tracks__card-btn top-tracks__card-btn--prev ${cardPos <= 0 ? 'disabled' : ''}`} onClick={sliderPrev}>
                             <img src={iconArrowPrev} alt="" className="top-tracks__card-btn-icon" />
                         </button>
-                        <button className={`top-tracks__card-btn top-tracks__card-btn--next ${cardPos >= 3 && width === 195 ? 'disabled' : cardPos >= 13 && width === 145 ? 'disabled' : ''}`} onClick={sliderNext}>
+                        <button className={`top-tracks__card-btn top-tracks__card-btn--next ${(cardPos * cardPosMultipler) * (cardListWidth - cardWidth) >= cardListWidth - cardWidth ? 'disabled' : ''}`} onClick={sliderNext}>
                             <img src={iconArrowNext} alt="" className="top-tracks__card-btn-icon" />
                         </button>
                     </div>

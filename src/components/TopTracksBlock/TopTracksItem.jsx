@@ -3,16 +3,16 @@ import { Link } from 'react-router'
 
 export default function TopTracksItem({ name, avatarUrl, id, artist, ratingTrack, setWidth }) {
 
-    const sliderRef = useRef(null)
+    // const sliderRef = useRef(null)
 
-    useEffect(() => {
-        if (sliderRef.current) {
-            setWidth(sliderRef.current.offsetWidth);
-        }
-    }, [window.screen.width])
+    // useEffect(() => {
+    //     if (sliderRef.current) {
+    //         setWidth(sliderRef.current.offsetWidth);
+    //     }
+    // }, [window.screen.width])
 
     return (
-        <li className="top-tracks__card-item" ref={sliderRef}>
+        <li className="top-tracks__card-item">
             <Link to={`/track/${id}`}>
                 <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="top-tracks__card-avatar" />
             </Link>
