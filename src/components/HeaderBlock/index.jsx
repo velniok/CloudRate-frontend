@@ -2,6 +2,7 @@ import React from 'react'
 import HeaderNav from './HeaderNav'
 import HeaderProfile from './HeaderProfile'
 import HeaderLogo from './HeaderLogo'
+import HeaderBurger from './HeaderBurger'
 
 export default function HeaderBlock() {
 
@@ -12,7 +13,10 @@ export default function HeaderBlock() {
                 <div className="header-inner">
                     <HeaderLogo />
                     <HeaderNav />
-                    <HeaderProfile />
+                    <div className="header-left">
+                      <HeaderProfile />
+                      <HeaderBurger />
+                    </div>
                 </div>
             </div>
         </div>
