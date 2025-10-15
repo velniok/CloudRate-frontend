@@ -4,13 +4,12 @@
     z-index: 999999;
     background-color: var(--color-black);
     border-top: 1px solid var(--color-black02);
-    border-radius: 12px 12px 0 0;
     width: 100%;
     left: 0;
     bottom: 0;
 
     &-inner {
-        padding: 12px 0;
+        padding: 14px 0;
     }
 
     &__nav {
@@ -39,12 +38,12 @@
         }
 
         &-icon {
-            width: 15px;
-            height: 15px;
+            width: 18px;
+            height: 18px;
         }
 
         &-text {
-            font-size: 10px;
+            font-size: 12px;
         }
     }
 }
