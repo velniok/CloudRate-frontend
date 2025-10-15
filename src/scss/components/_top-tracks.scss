@@ -133,16 +133,12 @@
 
         &__card {
             height: 265px;
-            overflow: unset;
-            overflow-y: scroll;
+            // overflow: unset;
+            // overflow-y: scroll;
 
-            &::-webkit-scrollbar {
-                display: none;
-            }
-
-            &-btn {
-                display: none;
-            }
+            // &::-webkit-scrollbar {
+            //     display: none;
+            // }
 
             &-list {
                 column-gap: 10px;
@@ -156,6 +152,48 @@
             &-avatar {
                 width: 143px;
                 height: 143px;
+            }
+        }
+    }
+}
+
+@media (hover: none) {
+    .top-tracks {
+        &__card {
+            overflow: unset;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            &-btn {
+                display: none;
+            }
+
+            &-item {
+                    
+                &:hover {
+                    opacity: 1;
+                }
+
+                &:active {
+                    opacity: 0.7;
+                }
+            }
+
+            &-aritst {
+
+                &-nickname {
+
+                    &:hover {
+                        opacity: 0.7;
+                    }
+
+                    &:active {
+                        opacity: 0.5;
+                    }
+                }
             }
         }
     }

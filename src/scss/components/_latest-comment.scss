@@ -133,3 +133,36 @@
         }
     }
 }
+
+@media (hover: none) {
+    .latest-comment {
+
+        &__card {
+
+            &-user {
+
+                &-avatar {
+                    
+                    &:hover {
+                        opacity: 1;
+                    }
+                    
+                    &:active {
+                        opacity: 0.7;
+                    }
+                }
+                
+                &-nickname {
+                    
+                    &:hover {
+                        opacity: 1;
+                    }
+                    
+                    &:active {
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+    }
+}

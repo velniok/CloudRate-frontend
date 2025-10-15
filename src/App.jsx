@@ -12,6 +12,7 @@ import { fetchAuthMe, selectIsAuth } from './redux/slices/auth'
 import AdminPage from './pages/AdminPage'
 import UserPage from './pages/UserPage'
 import SearchPage from './pages/SearchPage'
+import MoblieMenu from './components/MoblieMenu'
 
 export default function App() {
     const dispatch = useDispatch()
@@ -23,6 +24,7 @@ export default function App() {
     return (
         <>
             <HeaderBlock />
+            <MoblieMenu />
             <div className="main">
             <Routes>
                 <Route path='/' element={<HomePage />} />

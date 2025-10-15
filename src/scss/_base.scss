@@ -109,6 +109,11 @@ button {
         font-size: 12px;
     }
 
+    button {
+        font-size: 12px;
+        padding: 6px 18px;
+    }
+
     .rating-overall {
         width: 32px;
         height: 32px;
@@ -127,5 +132,20 @@ button {
 
     .container {
         padding: 0 10px;
+    }
+}
+
+@media (hover: none) {
+    button {
+
+        &:hover {
+            background-color: transparent;
+            color: var(--color-white);
+        }
+
+        &:active {
+            background-color: var(--color-white);
+            color: var(--color-black)
+        }
     }
 }
