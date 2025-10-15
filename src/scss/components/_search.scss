@@ -102,3 +102,56 @@
         }
     }
 }
+
+@media (max-width: 585px) {
+    .search {
+
+        &-top {
+            margin-bottom: 12px;
+            column-gap: 8px;
+        }
+
+        &-input {
+            width: 100%;
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        &-content {
+            flex-direction: column;
+            column-gap: 0;
+            row-gap: 12px;
+        }
+
+        &-none {
+            font-size: 14px;
+        }
+
+        &__filter {
+
+            &-list {
+                flex-direction: row;
+                justify-content: center;
+                column-gap: 10px;
+            }
+
+            &-item {
+                font-size: 14px;
+                padding: 6px 8px;
+            }
+        }
+
+        &__list {
+
+            &-avatar {
+                margin-right: 6px;
+                width: 50px;
+                height: 50px;
+            }
+
+            &-name {
+                font-size: 14px;
+            }
+        }
+    }
+}
