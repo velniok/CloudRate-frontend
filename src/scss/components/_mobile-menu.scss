@@ -10,14 +10,15 @@
     bottom: 0;
 
     &-inner {
-        padding: 12px 48px;
+        padding: 12px 0;
     }
 
     &__nav {
 
         &-list {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            column-gap: 48px;
         }
 
         &-item {
