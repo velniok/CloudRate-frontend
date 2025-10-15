@@ -10,31 +10,31 @@ export default function TrackProfile({ name, avatarUrl, artist, ratingTrackOvera
         <div className="track__profile">
             <img src={`${import.meta.env.VITE_API_URL}${avatarUrl}`} alt="" className="track__profile-avatar" />
             <div className="track__profile-info">
-                <div className="track__profile-bio">
+                <div className="track__profile-top">
                     <span className="track__profile-nickname">{name}</span>
-                    <a href="#!" className="track__profile-soundcloud">SoundCloud</a>
+                    {
+                        ratingTrackOverall.avgRating === 0 ? <></>
+                        :
+                        <>
+                            <div className="track__profile-rating">
+                                <span className="track__profile-rating-overall rating-overall">{ratingTrackOverall.avgRating}</span>
+                                <img src={iconArrowDown} alt="" className={`track__profile-rating-icon ${ratingInfoOpen ? 'open' : ''}`} onClick={() => serRatingInfoOpen(!ratingInfoOpen)} />
+                            </div>
+                            <div className={`track__profile-rating-info ${ratingInfoOpen ? 'open' : ''}`}>
+                                <ul className="track__profile-rating-list">
+                                    {
+                                        ratingTrackCriteria.map((e, index) => (
+                                            <li className="track__profile-rating-item" key={index}>
+                                                <span className="track__profile-rating-criteria rating-overall">{e.avgRating}</span>
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
+                            </div>
+                        </>
+                    }
                 </div>
-                {
-                    ratingTrackOverall.avgRating === 0 ? <span className="track__profile-rating-none">Оценок на этот трек еще нет. Будь первым, кто ее поставит!</span>
-                    :
-                    <>
-                        <div className="track__profile-rating">
-                            <span className="track__profile-rating-overall rating-overall">{ratingTrackOverall.avgRating}</span>
-                            <img src={iconArrowDown} alt="" className={`track__profile-rating-icon ${ratingInfoOpen ? 'open' : ''}`} onClick={() => serRatingInfoOpen(!ratingInfoOpen)} />
-                        </div>
-                        <div className={`track__profile-rating-info ${ratingInfoOpen ? 'open' : ''}`}>
-                            <ul className="track__profile-rating-list">
-                                {
-                                    ratingTrackCriteria.map((e, index) => (
-                                        <li className="track__profile-rating-item" key={index}>
-                                            <span className="track__profile-rating-criteria rating-overall">{e.avgRating}</span>
-                                        </li>
-                                    ))
-                                }
-                            </ul>
-                        </div>
-                    </>
-                }
+                <a href="#!" className="track__profile-soundcloud">SoundCloud</a>
                 <ul className="track__profile-artist-list">
                     {
                         artist.map(e => (
