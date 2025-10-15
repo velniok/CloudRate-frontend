@@ -133,27 +133,19 @@
 
         &__card {
             height: 265px;
+            overflow: unset;
+            overflow-y: scroll;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             &-btn {
-                width: 30px;
-                height: 30px;
-
-                &-icon {
-                    height: 10px;
-                }
-
-                &--prev {
-                    left: 6px;
-                }
-
-                &--next {
-                    right: 6px;
-                }
+                display: none;
             }
 
             &-list {
                 column-gap: 10px;
-                transition: transform 0.4s ease-in;
             }
 
             &-item {
