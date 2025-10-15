@@ -47,11 +47,16 @@
             margin-bottom: 12px;
         }
 
+        &-content {
+            position: relative;
+            overflow: hidden;
+            height: 315px;
+        }
+
         &-list {
-            display: grid;
-            grid-template-columns: repeat(6, 0fr);
+            position: absolute;
+            display: flex;
             column-gap: 28px;
-            row-gap: 20px;
         }
 
         &-item {
@@ -105,6 +110,70 @@
             position: absolute;
             bottom: 10px;
             right: 10px;
+        }
+    }
+}
+
+@media (max-width: 585px) {
+    .artist {
+        
+        &__profile {
+            padding: 12px;
+
+            &-info {
+                margin-left: 12px;
+            }
+
+            &-avatar {
+                width: 100px;
+                height: 100px;
+            }
+
+            &-nickname {
+                font-size: 18px;
+            }
+
+            &-soundcloud {
+                font-size: 12px;
+            }
+        }
+
+        &__track {
+
+            &-content {
+                height: 260px;
+            }
+
+            &-list {
+                column-gap: 20px;
+            }
+
+            &-item {
+                width: 140px;
+                height: 260px;
+            }
+
+            &-avatar {
+                height: 138px;
+                width: 138px;
+            }
+        }
+    }
+}
+
+@media (hover: none) {
+    .artist {
+
+        &__track {
+
+            &-content {
+                overflow: unset;
+                overflow-y: scroll;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
         }
     }
 }
