@@ -24,17 +24,13 @@
             &--edit {
                 cursor: pointer;
                 position: relative;
-                border: 2px dashed var(--color-gray);
+                border: 2px dashed transparent;
 
                 transition: opacity 0.3s, border 0.3s ease-in;
 
                 &:hover {
                     opacity: 0.7;
                     border: 2px dashed var(--color-white);
-
-                    & img {
-                        opacity: 1;
-                    }
                 }
             }
         }
@@ -131,6 +127,10 @@
                     height: 30px;
 
                     transition: opacity 0.3s ease-in;
+
+                    &:hover {
+                        opacity: 1;
+                    }
                 }
             }
         }
@@ -142,11 +142,18 @@
             margin-bottom: 12px;
         }
 
+        &-content {
+            position: relative;
+            overflow: hidden;
+            height: 315px;
+        }
+
         &-list {
-            display: grid;
-            grid-template-columns: repeat(6, 0fr);
+            position: absolute;
+            display: flex;
             column-gap: 28px;
-            row-gap: 20px;
+
+            transition: transform 0.3s ease-in;
         }
 
         &-item {
@@ -259,6 +266,199 @@
 
             &-review {
                 opacity: 0.7;
+            }
+        }
+
+        &-btn {
+            position: absolute;
+            visibility: visible;
+            opacity: 1;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--color-black01);
+            padding: 0;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: visibility 0.3s, opacity 0.3s ease-in;
+
+            &--next {
+                right: 8px;
+            }
+
+            &--prev {
+                left: 8px
+            }
+
+            & img {
+                transition: filter 0.3s ease-in;
+            }
+
+            &:hover {
+
+                & img {
+                    filter: brightness(0) saturate(100%)
+                }
+            }
+
+            &.disabled {
+                visibility: hidden;
+                opacity: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 585px) {
+    .user {
+        
+        &__profile {
+            padding: 12px;
+
+            &-info {
+                margin-left: 12px;
+            }
+
+            &-avatar {
+                width: 100px;
+                height: 100px;
+            }
+
+            &-nickname {
+                font-size: 18px;
+            }
+
+            &-role {
+                padding: 4px 8px;
+            }
+
+            &-soundcloud {
+                font-size: 12px;
+            }
+
+            &-edit {
+
+                &-icon {
+                    top: 12px;
+                    right: 12px;
+                    width: 15px;
+                    height: 15px;
+                }
+
+                &-close {
+                    top: 5px;
+                    right: 5px;
+                    padding: 6px 12px;
+                    font-size: 10px;
+                }
+
+                &-submit {
+                    bottom: 5px;
+                    right: 5px;
+                    font-size: 12px;
+                    padding: 6px 8px;
+                }
+            }
+        }
+
+        &__track {
+
+            &-content {
+                position: relative;
+                height: 260px;
+            }
+
+            &-list {
+                column-gap: 20px;
+            }
+
+            &-item {
+                width: 140px;
+                height: 260px;
+            }
+
+            &-avatar {
+                height: 138px;
+                width: 138px;
+            }
+
+            &-rating {
+                display: flex;
+                justify-content: space-between;
+
+                &-text {
+                    font-size: 10px;
+                    width: 85px;
+                }
+
+                &-info {
+
+                    &.open {
+                        bottom: 37px;
+                    }
+                }
+
+                &-criteria {
+                    width: 25px;
+                    height: 25px;
+                    font-size: 12px;
+                }
+
+                &-review {
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+}
+
+@media (hover: none) {
+    .user {
+
+        &__profile {
+
+            &-avatar {
+
+                &--edit {
+
+                    &:hover {
+                        opacity: 1;
+                        border: unset;
+                    }
+                }
+            }
+
+            &-edit {
+
+                &-avatar {
+
+                    &-icon {
+                        
+                        &:hover {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__track {
+
+            &-content {
+                overflow: unset;
+                overflow-y: scroll;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            &-btn {
+                display: none;
             }
         }
     }

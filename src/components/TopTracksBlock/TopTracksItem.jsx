@@ -1,15 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router'
 
-export default function TopTracksItem({ name, avatarUrl, id, artist, ratingTrack, setWidth }) {
-
-    // const sliderRef = useRef(null)
-
-    // useEffect(() => {
-    //     if (sliderRef.current) {
-    //         setWidth(sliderRef.current.offsetWidth);
-    //     }
-    // }, [window.screen.width])
+export default function TopTracksItem({ name, avatarUrl, id, artist, ratingTrack }) {
 
     return (
         <li className="top-tracks__card-item">

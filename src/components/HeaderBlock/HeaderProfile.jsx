@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectIsAuth } from '../../redux/slices/auth';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import HeaderProfileInfo from './HeaderProfileInfo';
 
 export default function HeaderProfile() {
+
+    const pathname = useLocation().pathname;
 
     const dispatch = useDispatch()
 
@@ -13,6 +15,10 @@ export default function HeaderProfile() {
     const UserData = useSelector((state) => state.auth.data)
 
     const [openProfile, setOpenProfile] = useState(false)
+
+    useEffect(() => {
+        setOpenProfile(false)
+    }, [pathname])
 
     const onClickLogout = () => {
         dispatch(logout())

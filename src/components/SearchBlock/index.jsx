@@ -20,7 +20,7 @@ export default function SearchBlock() {
                 filter,
             }))
         }
-    }, [searchValue])
+    }, [searchValue, filter])
 
     return (
         <section className="search">
@@ -33,13 +33,13 @@ export default function SearchBlock() {
                     <div className="search-content">
                         <div className="search__filter">
                             <ul className="search__filter-list">
-                                <li className={`search__filter-item ${filter === "artist" ? 'active' : ''}`} onClick={() => {setFilter("artist"); setSearchValue('')}}>
+                                <li className={`search__filter-item ${filter === "artist" ? 'active' : ''}`} onClick={() => setFilter("artist")}>
                                     Артисты
                                 </li>
-                                <li className={`search__filter-item ${filter === "track" ? 'active' : ''}`} onClick={() => {setFilter("track"); setSearchValue('')}}>
+                                <li className={`search__filter-item ${filter === "track" ? 'active' : ''}`} onClick={() => setFilter("track")}>
                                     Треки
                                 </li>
-                                <li className={`search__filter-item ${filter === "user" ? 'active' : ''}`} onClick={() => {setFilter("user"); setSearchValue('')}}>
+                                <li className={`search__filter-item ${filter === "user" ? 'active' : ''}`} onClick={() => setFilter("user")}>
                                     Пользователи
                                 </li>
                             </ul>

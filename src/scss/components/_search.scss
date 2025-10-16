@@ -128,10 +128,12 @@
         }
 
         &__filter {
+            display: flex;
+            justify-content: start;
+            width: 100%;
 
             &-list {
                 flex-direction: row;
-                justify-content: center;
                 column-gap: 10px;
             }
 
