@@ -14,7 +14,9 @@ export default function ArtistTrack({ tracks }) {
     const cardListRef = useRef(null)
 
     useEffect(() => {
-        setCardListWidth(cardListRef.current.offsetWidth)
+        if (cardListRef.current) {
+            setCardListWidth(cardListRef.current.offsetWidth)
+        }
         setCardWidth(cardRef.current.offsetWidth)
         if (cardWidth > 650) {
             setCardPosMultipler(1)

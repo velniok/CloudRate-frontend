@@ -19,7 +19,7 @@ export default function UserSkeleton() {
                         <h2 className="user__track-title title">Оценки пользователя</h2>
                         <ul className="user__track-list">
                             {
-                                [...Array(12)].map((e, index) => (
+                                [...Array(6)].map((e, index) => (
                                     <li className="user__track-item" key={index}>
                                         <Skeleton className="user__track-avatar" />
                                         <div className="user__track-info">

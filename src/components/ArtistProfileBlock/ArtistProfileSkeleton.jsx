@@ -17,7 +17,7 @@ export default function ArtistProfileSkeleton() {
                         <h2 className="artist__track-title title">Треки артиста</h2>
                         <ul className="artist__track-list">
                             {
-                                [...Array(12)].map((e, index) => (
+                                [...Array(6)].map((e, index) => (
                                     <li className="artist__track-item" key={index}>
                                         <Skeleton className="artist__track-avatar" />
                                         <div className="artist__track-info">

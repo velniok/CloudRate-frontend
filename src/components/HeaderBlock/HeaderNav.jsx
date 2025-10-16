@@ -23,11 +23,6 @@ export default function HeaderNav() {
                         Новости
                     </Link>
                 </li>
-                <li className="header__nav-item">
-                    <Link className="header__nav-link">
-                        О нас
-                    </Link>
-                </li>
             </ul>
         </nav>
     )
