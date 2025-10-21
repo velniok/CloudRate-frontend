@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchTrackCreate } from '../../redux/slices/trackAdmin'
 import axios from '../../axios'
 import addPhotoIcon from '../../assets/icons/addPhoto-icon.svg'
+import { fetchSearch } from '../../redux/slices/search'
 
-export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData }) {
+export default function AdminTrackCreate({ modalOpen, setModalOpen }) {
 
     const dispatch = useDispatch()
 
@@ -12,10 +13,21 @@ export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData 
     const [artistName, setArtistName] = useState('')
     const [artistId, setArtistId] = useState([])
     const [avatarUrl, setAvatarUrl] = useState('')
-    const [filterArtist, setFilterArtist] = useState([])
     const [trackArtist, setTrackArtist] = useState([])
 
     const inputAvatarRef = useRef(null)
+
+    const SearchData = useSelector(state => state.search.data)
+    const SearchStatus = useSelector(state => state.search.status)
+
+    useEffect(() => {
+        if (artistName !== '') {
+            dispatch(fetchSearch({
+                value: artistName,
+                filter: 'artist',
+            }))
+        }
+    }, [artistName])
 
     const onChangeAvatar = async (event) => {
             try {
@@ -33,38 +45,20 @@ export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData 
     const onClickTrackCreate = () => {
         let artist = []
 
-        const artistsDataIds = ArtistsData.map(obj => obj._id)
-
-        artistId.map(e => {
-            if (artistsDataIds.includes(e)) {
-                ArtistsData.map(obj => {
-                    if (obj._id === e) {
-                        const artistObj = {
-                            "id": artist.length + 1,
-                            "name": obj.name,
-                            "artistId": obj._id
-                        }
-                        artist.push(artistObj)
-                    }
-                })
+        trackArtist.map(e => {
+            const artistObj = {
+                "name": e.name,
+                "artistId": e._id
             }
+            artist.push(artistObj)
         })
+
         dispatch(fetchTrackCreate({ name, artist, avatarUrl }))
         setName('')
         setArtistName('')
         setAvatarUrl('')
         setArtistId([])
         setTrackArtist([])
-    }
-
-    const onChangeArtistName = (e) => {
-        setArtistName(e.target.value)
-        setFilterArtist(prev => prev = ArtistsData.filter(obj => {
-            if (obj.name.includes(e.target.value)) {
-                return true
-            } else if (obj.name.includes("ё") && e.target.value.includes("е")) {
-                return true
-        }}))
     }
 
     const onClickArtistId = (e) => {
@@ -112,16 +106,17 @@ export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData 
                                 })
                             }
                         </ul>
-                        <input type="text" className="admin-track__create-input" value={artistName} onChange={e => onChangeArtistName(e)} />
+                        <input type="text" className="admin-track__create-input" value={artistName} onChange={e => setArtistName(e.target.value)} />
                         <ul className={`admin-track__filter-list ${artistName && 'show'}`}>
                             {
-                                filterArtist.length === 0 || 
-                                filterArtist.map(e => {
+                                SearchStatus === 'loading' ? <>ищите</> :
+                                SearchData.length === 0 || 
+                                SearchData.map(e => {
                                     if (artistId.includes(e._id)) {
                                         return true
                                     }
                                 }) === true ||
-                                (filterArtist.length > 0 && filterArtist.map(e => {
+                                (SearchData.length > 0 && SearchData.map(e => {
                                     if (artistId.includes(e._id)) {
                                         return true
                                     }
@@ -133,7 +128,7 @@ export default function AdminTrackCreate({ modalOpen, setModalOpen, ArtistsData 
                                 ?
                                 <></>
                                 :                                 
-                                filterArtist.map(e => {
+                                SearchData.map(e => {
                                     if (artistId.includes(e._id) === false) {
                                         return <li className="admin-track__filter-item" onClick={() => onClickArtistId(e)} key={e._id}>
                                             <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt="" className="admin-track__filter-avatar" />

@@ -1,0 +1,60 @@
+.user-edit {
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+
+        &-list {
+            margin-bottom: 26px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            row-gap: 15px; 
+        }
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+        }
+
+        &-input {
+            width: 350px;
+            outline: none;
+            background-color: var(--color-black01);
+            border: 1px solid var(--color-black02);
+            border-radius: 8px;
+            padding: 15px 12px;
+            color: var(--color-white);
+
+            &.error {
+                border: 1px solid var(--color-red);
+            }
+        }
+
+        &-btn {
+            padding: 0;
+            border: unset;
+            height: 200px;
+
+            transition: opacity 0.3s ease-in;
+
+            &:hover {
+                background-color: unset;
+                color: unset;
+                opacity: 0.7;
+            }
+        }
+
+        &-avatar {
+            border-radius: 12px;
+            width: 200px;
+            height: 200px;
+        }
+
+        &-submit {
+            font-size: 16px;
+            padding: 10px 42px;
+        }
+    }
+}

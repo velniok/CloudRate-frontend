@@ -14,7 +14,7 @@ export default function HeaderProfileInfo({ onClickLogout, openProfile, setOpenP
             </span>
                 <div className="header__profile-inner">
                 <Link to={`/user/${UserData.user._id}`}>
-                    <span className="header__profile-page header__profile--action" onClick={() => setOpenProfile(false)} >Моя страница</span>
+                    <span className="header__profile-page header__profile--action" onClick={() => setOpenProfile(false)}>Моя страница</span>
                 </Link>
                 {
                     UserData.user.role === 'admin' &&
@@ -22,6 +22,9 @@ export default function HeaderProfileInfo({ onClickLogout, openProfile, setOpenP
                         <span className="header__profile-admin header__profile--action" onClick={() => setOpenProfile(false)}>Админ-панель</span>
                     </Link>
                 }
+                <Link to={`/user/${UserData.user._id}/edit`}>
+                    <span className="header__profile-page header__profile--action" onClick={() => setOpenProfile(false)}>Изменить профиль</span>
+                </Link>
                 <span className="header__profile-logout header__profile--action" onClick={() => {onClickLogout(); setOpenProfile(false)}}>Выйти из аккаунта</span>
             </div>
         </div>

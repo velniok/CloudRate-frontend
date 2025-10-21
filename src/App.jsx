@@ -13,6 +13,7 @@ import AdminPage from './pages/AdminPage'
 import UserPage from './pages/UserPage'
 import SearchPage from './pages/SearchPage'
 import MoblieMenu from './components/MoblieMenu'
+import UserEditPage from './pages/UserEditPage'
 
 export default function App() {
     const dispatch = useDispatch()
@@ -34,6 +35,7 @@ export default function App() {
                 <Route path='/login' element={<AuthLogin />} />
                 <Route path='/admin' element={<AdminPage />} />
                 <Route path='/user/:id' element={<UserPage />} />
+                <Route path='/user/:id/edit' element={<UserEditPage />} />
                 <Route path='/search' element={<SearchPage />} />
             </Routes>
             </div>

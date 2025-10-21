@@ -8,7 +8,7 @@ export default function ArtistTrack({ tracks }) {
     const [cardPos, setCardPost] = useState(0)
     const [cardListWidth, setCardListWidth] = useState(0)
     const [cardWidth, setCardWidth] = useState(0)
-    const [cardPosMultipler, setCardPosMultipler] = useState(0)
+    const [cardPosMultipler, setCardPosMultipler] = useState(0.5)
 
     const cardRef = useRef(null)
     const cardListRef = useRef(null)
@@ -18,11 +18,6 @@ export default function ArtistTrack({ tracks }) {
             setCardListWidth(cardListRef.current.offsetWidth)
         }
         setCardWidth(cardRef.current.offsetWidth)
-        if (cardWidth > 650) {
-            setCardPosMultipler(1)
-        } else {
-            setCardPosMultipler(0.1)
-        }
     }, [cardPos])
 
     const sliderNext = () => {

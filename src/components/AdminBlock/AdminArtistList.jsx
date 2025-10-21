@@ -4,7 +4,7 @@ import { fetchArtistRemove } from '../../redux/slices/artistAdmin'
 import AdminArtistEdit from './AdminArtistEdit'
 import { Link } from 'react-router'
 
-export default function AdminArtistList({ name, avatarUrl, id, TracksData, tracks, soundCloudUrl }) {
+export default function AdminArtistList({ name, avatarUrl, id, tracks, soundCloudUrl }) {
 
     const dispatch = useDispatch()
 
@@ -23,11 +23,7 @@ export default function AdminArtistList({ name, avatarUrl, id, TracksData, track
         </div>
         <ul className="admin-artist__list-track-list">
             {
-                TracksData.filter(obj => {
-                    if (tracks.includes(obj._id)) {
-                        return true
-                    }
-                }).map((e, index) => {
+                tracks.map((e, index) => {
                     if (index < 3) {
                         return (
                             <li className="admin-artist__list-track-item" key={e._id}>
@@ -39,21 +35,13 @@ export default function AdminArtistList({ name, avatarUrl, id, TracksData, track
                 })
             }
             {
-                TracksData.filter(obj => {
-                    if (tracks.includes(obj._id)) {
-                        return true
-                    }
-                }).length > 3 && (<>
+                tracks.length > 3 && (<>
                 <li className="admin-artist__list-track-item admin-artist__list-track-item--more" onClick={() => setOpenMore(!openMore)}>
                     <span className={`admin-artist__list-track-more-btn ${openMore ? "show" : ""}`}>+</span>
                 </li>
                     <div className={`admin-artist__list-track-more-wrapper ${openMore ? "show" : ""}`}>
                     {
-                        TracksData.filter(obj => {
-                            if (tracks.includes(obj._id)) {
-                                return true
-                            }
-                        }).map((e, index) => {
+                        tracks.map((e, index) => {
                             if (index > 2) {
                                 return (
                                     <div className="admin-artist__list-track-item" key={e._id}>

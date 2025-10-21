@@ -15,8 +15,8 @@ export const fetchTrackEdit = createAsyncThunk('artist/fetchTrackEdit', async (p
     }
 })
 
-export const fetchTrackAll = createAsyncThunk('track/fetchTrackAll', async () => {
-    const { data } = await axios.get('/track')
+export const fetchTrackAll = createAsyncThunk('track/fetchTrackAll', async (params) => {
+    const { data } = await axios.get(`/track${params.page}`)
     return data
 })
 

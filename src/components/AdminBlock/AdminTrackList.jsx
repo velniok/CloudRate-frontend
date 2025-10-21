@@ -4,7 +4,7 @@ import { fetchTrackRemove } from '../../redux/slices/trackAdmin'
 import { Link } from 'react-router'
 import AdminTrackEdit from './AdminTrackEdit'
 
-export default function AdminTrackList({ name, id, avatarUrl, artist, ArtistsData }) {
+export default function AdminTrackList({ name, id, avatarUrl, artists }) {
 
     const dispatch = useDispatch()
 
@@ -22,12 +22,12 @@ export default function AdminTrackList({ name, id, avatarUrl, artist, ArtistsDat
             </div>
             <ul className="admin-track__list-owner-list">
                 {
-                    artist.map(e => ArtistsData.filter(obj => obj._id === e.artistId).map(e => (
+                    artists.map(e => (
                         <li className="admin-track__list-owner-item" key={e._id}>
                             <img src={`${import.meta.env.VITE_API_URL}${e.avatarUrl}`} alt={e.name} className="admin-track__list-owner-avatar" />
                             <span className="admin-track__list-owner-name">{e.name}</span>
                         </li>
-                    )))
+                    ))
                 }
             </ul>
             <div className="admin-track__list-options">

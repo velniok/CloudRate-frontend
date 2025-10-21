@@ -19,8 +19,8 @@ export const fetchArtistEdit = createAsyncThunk('artist/fetchArtistEdit', async 
     }
 })
 
-export const fetchArtistAll = createAsyncThunk('artist/fetchArtistAll', async () => {
-    const { data } = await axios.get('/artist')
+export const fetchArtistAll = createAsyncThunk('artist/fetchArtistAll', async (params) => {
+    const { data } = await axios.get(`/artist${params.page}`)
     return data
 })
 
@@ -70,7 +70,7 @@ const artistAdminSlice = createSlice({
 
         .addCase(fetchArtistAll.pending, (state) => {
             state.status = 'loading',
-            state.data = null
+            state.data = state.data
         })
         .addCase(fetchArtistAll.fulfilled, (state, action) => {
             state.status = 'loaded',
