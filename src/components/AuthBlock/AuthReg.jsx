@@ -11,7 +11,7 @@ export default function AuthReg() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [nickname, setNickname] = useState('')
+    const [name, setName] = useState('')
     const [emailError, setEmailError] = useState(null)
     const [passwordError, setPasswordError] = useState(null)
     const [nicknameError, setNicknameError] = useState(null)
@@ -20,7 +20,7 @@ export default function AuthReg() {
         if (password !== confirmPassword) {
             return false
         }
-        const data = await dispatch(fetchRegister({nickname, email, password}))
+        const data = await dispatch(fetchRegister({name, email, password}))
         if (data.error?.message) {
             data.payload.map(e => {
                 e.path === 'email' ? setEmailError(`${e.msg}`) :
@@ -59,7 +59,7 @@ export default function AuthReg() {
                                 {
                                     nicknameError && <span className="reg__form-error">{nicknameError}</span>
                                 }
-                                <input type="text" className={`reg__form-input ${nicknameError ? 'error' : ''}`} placeholder='Никнейм' required value={nickname} onChange={e => setNickname(e.target.value)} />
+                                <input type="text" className={`reg__form-input ${nicknameError ? 'error' : ''}`} placeholder='Никнейм' required value={name} onChange={e => setName(e.target.value)} />
                             </li>
                             <li className="reg__form-item">
                                 {

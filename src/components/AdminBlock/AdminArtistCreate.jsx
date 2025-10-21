@@ -23,6 +23,7 @@ export default function AdminArtistCreate({ modalOpen, setModalOpen }) {
                 const formData = new FormData()
                 formData.append('image', avatar)
                 const { data } = await axios.post('/upload', formData)
+                console.log(data)
                 setAvatarUrl(data.url)
             } catch (err) {
                 console.warn(err)

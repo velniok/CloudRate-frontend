@@ -109,6 +109,7 @@
 
                 &-item {
                     display: inline-flex;
+                    max-width: 140px;
                     align-items: center;
                     column-gap: 5px;
                     padding: 6px 12px;
@@ -137,6 +138,9 @@
 
                 &-name {
                     font-size: 14px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
 
                 &-more {

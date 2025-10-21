@@ -3,6 +3,7 @@ import axios from '../../axios'
 import { useSelector } from 'react-redux'
 import { selectIsAuth } from '../../redux/slices/auth'
 import iconArrowDown from '../../assets/icons/icon-arrow-down.svg'
+import iconClose from '../../assets/icons/close-icon.svg'
 import { Link } from 'react-router'
 
 export default function TrackRating({ id }) {
@@ -10,19 +11,54 @@ export default function TrackRating({ id }) {
     const isAuth = useSelector(selectIsAuth)
     const UserData = useSelector(state => state.auth.data)
 
-    const ratingTitle = ["Критерий1", "Критерий2", "Критерий3", "Критерий4", "Критерий5",]
+    const ratingTitle = ["Текст", "Бит и Ритм", "Мастерство Подачи", "Аранжировка", "Атмосфера и Эмоции",]
+    const ratinCriteriaInfo = [
+        {
+            name: "Текст",
+            desc: ` - Техника: Рифмы, игра слов, поэтические приемы.
+ - Содержание: Оригинальность сюжета, глубина мысли, искренность эмоций.
+ - Запоминаемость: Есть ли "крючки" и строчки, которые хочется повторить?`
+        },
+        {
+            name: "Бит и Ритм",
+            desc: ` - Моторика: Насколько физически ощутим и притягателен ритм?
+ - Сложность: Интересные ли ритмические рисунки, сбивки, изменения?
+ - Энергия: Трек заряжает, расслабляет или вводит в транс?`
+        },
+        {
+            name: "Мастерство Подачи",
+            desc: ` - Флоу: Ритмическая уникальность, умение "кататься" по биту.
+ - Дикция: Четкость произношения, акценты.
+ - Эмоциональность: Передача настроения через голос: агрессия, меланхолия, радость.`
+        },
+        {
+            name: "Аранжировка",
+            desc: ` - Качество: Насколько чистый, современный и профессиональный звук?
+ - Текстуры: Богатство и разнообразие звуковых слоев (пады, синты, эффекты).
+ - Динамика: Есть ли развитие от куплета к припеву, интересные переходы, брейкдауны?
+ - Детали: Слышны ли уникальные звуковые вкрапления, которые открываются при многократном прослушивании?`
+        },
+        {
+            name: "Атмосфера и Эмоции",
+            desc: ` - Целостность: Насколько все компоненты (текст, бит, вокал, продакшн) работают на одну общую идею?
+ - Уникальность: Есть ли у трека своё неповторимое лицо и настроение?
+ - Эмоциональный отклик: Какой след оставляет трек после прослушивания? Восторг? Грусть? Прилив сил?`
+        },
+    ]
+
     const [rating, setRating] = useState([5, 5, 5, 5, 5])
     const [ratingOverall, setRatingOverall] = useState(25)
     const [review, setReview] = useState('')
     const [reviewOpen, setReviewOpen] = useState(false)
     const [reviewError, setReviewError] = useState(false)
 
+    const [criteriaInfoOpen, setCriteriaInfoOpen] = useState(false)
+    const [criteriaTabOpen, setCriteriaTabOpen] = useState(null)
+
     useEffect(() => {
         setRatingOverall(prev => prev = 0)
 
-        rating.map(e => {
-            setRatingOverall(prev => prev += e)
-        })
+        setRatingOverall(prev => prev = Math.round( ( (rating[0] * 1.2) + (rating[1] * 1.2) + (rating[2] * 1.2) + (rating[3] * 1.2) + (rating[4] * 1.7) ) ) )
     }, [rating])
 
     const onChangeRating = (event) => {
@@ -56,6 +92,29 @@ export default function TrackRating({ id }) {
     <div className="track__rating">
         <h2 className="track__rating-title title">Оценить трек</h2>
         <div className="track__rating-wrapper">
+        <span className="track__rating-criteria-open" onClick={() => setCriteriaInfoOpen(true)}>?</span>
+        <div className={`track__rating-criteria-info ${criteriaInfoOpen ? 'open' : ''}`}>
+            <img src={iconClose} alt="" className="track__rating-criteria-close" onClick={() => {setCriteriaInfoOpen(false); setCriteriaTabOpen(null)}} />
+            <ul className="track__rating-criteria-list">
+                {
+                    ratinCriteriaInfo.map((e, index) => (
+                        <li className="track__rating-criteria-item">
+                            <h3 className="track__rating-criteria-title" onClick={() => {
+                                if (index === criteriaTabOpen) {
+                                    setCriteriaTabOpen(null)
+                                    return false
+                                }
+
+                                setCriteriaTabOpen(index)
+                            }}>
+                                {e.name}
+                            </h3>
+                            <p className={`track__rating-criteria-desc ${criteriaTabOpen === index ? 'open' : ''}`}>{e.desc}</p>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
             <ul className="track__rating-list">
                 {
                     ratingTitle.map((e, indexTitle) => (
